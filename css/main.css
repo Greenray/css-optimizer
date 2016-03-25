@@ -1,0 +1,41 @@
+/* main.css */
+@import url("vendor/normalize.css");
+@import url(style.css);
+#frame {
+    background: gray;
+    background-image: linear-gradient(180deg, #909090 0%, #3d3d3d 50%, #404040 100%);
+    color: #fff;
+    font: normal 10px/12px Verdana, Arial, Helvetica, sans-serif;
+}
+
+#point,
+#mid,
+#cap {
+    display: block;
+    left: 0px;       /* This will be replaced with 0 ( 0px; )*/
+    position: relative;
+    top:0;           /* This will be replaced with 0 ( :0px; ) */
+    width: 145px;
+}
+
+#point {
+    background: #fff;
+    border: 1px solid #747270;
+    border-radius: 5px;
+    height: 19px;
+}
+
+#mid {
+    background: #999;
+    box-shadow: 1px 2px 2px #000;
+    height: auto;
+    width: 115px;
+}
+
+#cap {
+    background: #1e5799;
+    background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    box-shadow: none;
+    height: 7px;
+    transition: height .25s ease .1s;
+}
