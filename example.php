@@ -12,9 +12,8 @@ $html = file_get_contents('example.html');
 preg_match_all("#\<link rel=\"stylesheet\" type=\"text\/css\" href=\"(.*?)\" media=\"(.*?)\" \/\>#is", $html, $matches);
 
 $cache = TRUE;
-$gzip  = TRUE;
 foreach($matches[1] as $key => $file) {
-    $CSS  = new CSS($cache, $gzip);
+    $CSS  = new CSS($cache);
     $html = str_replace($matches[0][$key], '<style type="text/css">'.$CSS->compress($file).'</style>', $html);
 }
 echo $html;

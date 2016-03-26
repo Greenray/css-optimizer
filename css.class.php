@@ -2,11 +2,12 @@
 /**
  * CSS prefixer and optimizer.
  *
- * Reads css code, automatically inserts browser-specific prefixes and compresses the code.
+ * Reads css code, automatically inserts browser-specific prefixes and compresses
+ * the code with removing comments, two or more consecutive spaces,
+ * newline characters and tabs, spaces, if a curly bracket, colon,
+ * semicolon or comma is placed before or after them.
  * There is a possibility of caching the result.
- * This class does not generate errors, because in case of failure to write files in the cache,
- * the browser will handle the css files as usual.
- * In this case, it is important to follow the correct installation of access rights to the data directory (the cache).
+ * It is important to set the correct installation of access rights to the cache directory.
  * This program requires PHP 5.4+
  *
  * @program   CSS parser and optimizer.
@@ -25,9 +26,6 @@ class CSS {
 
     /** @var string CSS code that is executing */
 	private $css = '';
-
-    /** @var boolean TRUE if gzip is allowed */
-	private $gzip = '';
 
     /**
      * The browser-specific prefixes.
@@ -155,10 +153,73 @@ class CSS {
 	public function __construct($cache = TRUE, $gzip = TRUE) {
         $this->css   = '';
         $this->cache = $cache;
-        $this->gzip  = $gzip;
     }
 
-    /** Handles directive "@import". */
+    /**
+     * Class main method.
+     *
+     * Handles directive "@import".
+     * Generates CSS3 properties with browser-specific prefixes.
+     * Removes unneeded characters, see comments.
+     * Works with cache and gzip.
+     *
+     * @param  string $file CSS file
+     * @return string       Prefixed and compressed CSS
+     */
+    public function compress($file) {
+        $cached = str_replace('/', '.', $file);
+        if ($this->cache === TRUE) {
+            $this->css = $this->getFromCache($cached);
+        }
+        if ($this->css === FALSE) {
+            if (is_readable($file)) {
+                $pathinfo = pathinfo($file);
+                $this->css = file_get_contents($file);
+                #
+                # Processing rule @import
+                #
+                $this->import($pathinfo['dirname']);
+                #
+                # Set the prefixes of browsers
+                #
+                $this->setPrefixes();
+                #
+                # Remove two or more consecutive spaces
+                #
+                $this->css = preg_replace('# {2,}#', '', $this->css);
+                $this->css = str_replace([' 0px', ' 0em', ' 0ex', ' 0cm', ' 0mm', ' 0in', ' 0pt', ' 0pc'],  '0', $this->css);
+                $this->css = str_replace([':0px', ':0em', ':0ex', ':0cm', ':0mm', ':0in', ':0pt', ':0pc'], ':0', $this->css);
+                #
+                # Remove the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them
+                #
+                $this->css = preg_replace('#\s*([\{:;,])\s*#', '$1', $this->css);
+                #
+                # Remove newline characters and tabs
+                #
+                        #
+                        # Readable result (remove after testing)
+                        #
+                        file_put_contents(CACHE.$cached.'.readable.css', $this->css, LOCK_EX);
+                        #
+                        #
+                $this->css = str_replace(["\r\n", "\r", "\n", "\t"], '', $this->css);
+                #
+                # Place the compiled data into cache
+                # For clarity, a simple file name is used, but can be applied encoding
+                #
+                if ($this->cache === TRUE) {
+                    file_put_contents(CACHE.$cached, $this->css, LOCK_EX);
+                }
+            }
+        }
+        return $this->css;
+    }
+
+    /**
+     * Handles rule "@import".
+     *
+     * @param string $dir CSS file's directory
+     */
     private function import($dir) {
         preg_match_all('/\@import url\(([\w\'\"\/.]*)\);/', $this->css, $match);
         if (!empty($match[0])) {
@@ -215,78 +276,6 @@ class CSS {
                 }
             }
         }
-    }
-
-    /**
-     * Class main method.
-     *
-     * Handles directive "@import".
-     * Generates CSS3 properties with browser-specific prefixes.
-     * Removes unneeded characters, see comments.
-     * Works with cache and gzip.
-     *
-     * @param  string $file CSS file
-     * @return string       Compressed CSS
-     */
-    public function compress($file) {
-        $cached = str_replace('/', '.', $file);
-        if ($this->cache === TRUE) {
-            $this->css = $this->getFromCache($cached);
-        }
-        if ($this->css === FALSE) {
-            if (is_readable($file)) {
-                $pathinfo = pathinfo($file);
-                $this->css = file_get_contents($file);
-                #
-                # Processing directives @font-face and @import
-                #
-                $this->import($pathinfo['dirname']);
-                #
-                # Set the prefixes of browsers
-                #
-                $this->setPrefixes();
-                #
-                # Remove two or more consecutive spaces
-                #
-                $this->css = preg_replace('# {2,}#', '', $this->css);
-                $this->css = str_replace([' 0px', ' 0em', ' 0ex', ' 0cm', ' 0mm', ' 0in', ' 0pt', ' 0pc'],  '0', $this->css);
-                $this->css = str_replace([':0px', ':0em', ':0ex', ':0cm', ':0mm', ':0in', ':0pt', ':0pc'], ':0', $this->css);
-                #
-                # Remove the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them
-                #
-                $this->css = preg_replace('#\s*([\{:;,])\s*#', '$1', $this->css);
-                #
-                # Remove newline characters and tabs
-                #
-                        #
-                        # Readable result (remove after testing)
-                        #
-                        file_put_contents(CACHE.$cached.'.readable.css', $this->css, LOCK_EX);
-                        #
-                        #
-                $this->css = str_replace(["\r\n", "\r", "\n", "\t"], '', $this->css);
-                #
-                # Place the compiled data into cache
-                # For clarity, a simple file name is used, but can be applied encoding
-                #
-                if ($this->cache === TRUE) {
-//                    if ($this->gzip === TRUE) {   After testing remove comment marker
-                        #
-                        # Using gzip
-                        # After testing remove '.gz.css'
-                        #
-                        $gz = gzopen(CACHE.$cached.'.gz.css','w9');
-                        if ($gz !== FALSE) {
-                            gzwrite($gz, $this->css);
-                            gzclose($gz);
-                        }
-//                    } else {  After testing remove comment marker
-                        file_put_contents(CACHE.$cached, $this->css, LOCK_EX);
-//                    }         After testing remove comment marker
-                }
-            }
-        }
-        return $this->css;
     }
 
     /**
