@@ -4,8 +4,8 @@ CSS parser and optimizer.
 Parses css code, automatically inserts browser-specific prefixes and compresses the code.
 There is a possibility of caching the result.
 
-The browser-specific prefixes is not a complete list but the most used css properties.
-So it can easily be extended.
+This class does not generate errors, because in case of failure to write files in the cache, the browser will handle the css files as usual.
+In this case, it is important to follow the correct installation of access rights to the data directory (the cache).
 
 ## Feachures
 

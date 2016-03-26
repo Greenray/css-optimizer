@@ -4,16 +4,13 @@ CSS prefixer and optimizer.
 Reads css code, automatically inserts browser-specific prefixes and compresses the code.
 There is a possibility of caching the result.
 
-The browser-specific prefixes is not a complete list but the most used css properties.
-So it can easily be extended.
-
 This class does not generate errors, because in case of failure to write files in the cache,
 the browser will handle the css files as usual.
 In this case, it is important to follow the correct installation of access rights to the data directory (the cache).
 
 ----- FEACHURES -----
 
-    - Processes css __@import__ directive thus multiple files can be combined into one.
+    - Processes css @import directive thus multiple files can be combined into one.
     - Automatically inserts browser-specific prefixes for defined css properties.
     - Removes two or more consecutive spaces.
     - Removes the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them.
