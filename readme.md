@@ -21,7 +21,6 @@ This program requires PHP 5.4+
 
 ## Example
 
-<pre>
     /* File styles.css */
 
     .some_class {
@@ -37,11 +36,9 @@ This program requires PHP 5.4+
 
         transition: height .25s ease .1s;
     }
-</pre>
 
 ## Result
 
-<pre>
 .some_class{
 background:#1e5799;
 background:-webkit-linear-gradient(to bottom,#1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
@@ -62,7 +59,6 @@ padding:5px 0;
 -o-transition:height .25s ease .1s;
 transition:height .25s ease .1s;
 }
-</pre>
 
 After finishing (removing newlines) the data file will be prepared, placed in one line.
 
