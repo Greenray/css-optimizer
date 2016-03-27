@@ -10,7 +10,7 @@
  * It is important to set the correct installation of access rights to the cache directory.
  * This program requires PHP 5.4+
  *
- * @program   CSS parser and optimizer.
+ * @program   CSS prefixer and optimizer.
  * @version   1.0
  * @package   Template
  * @file      css.class.php
@@ -150,7 +150,7 @@ class CSS {
      * @param boolean $cache Is cache allowed?
      * @param boolean $gzip  Is gzip allowed?
      */
-	public function __construct($cache = TRUE, $gzip = TRUE) {
+	public function __construct($cache = TRUE) {
         $this->css   = '';
         $this->cache = $cache;
     }
@@ -217,6 +217,9 @@ class CSS {
 
     /**
      * Handles rule "@import".
+     * Recognizes the rules:
+     * @import url("dir/style.css");
+     * @import url(style.css);
      *
      * @param string $dir CSS file's directory
      */
