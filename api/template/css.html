@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+    <title>API for class CSS (CSS parser and optimizer v1.0)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="phpAPI 5.0 (https://github.com/Greenray/phpAPI/)">
+    <link href="../style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <div class="page">
+        <div class="header center">
+            <div class="content">
+                CSS parser and optimizer v1.0                <div class="logo_desc">Application Programming Interface</div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="content">
+                <h1>Namespaces</h1>
+<ul>
+    <li><a href="../template/package-summary.html">Template</a></li>
+</ul>
+<h1>Namespace Template</h1>
+    <h2>Classes</h2>
+    <ul>
+            <li><a href="../template/css.html" title="Template \ CSS">CSS</a></li>
+        </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="content">
+                <nav class="menu_main center"><div class="menu">
+            <ul>
+                    <li><a href="../index.html">Overview</a></li>
+                    <li><a href="../template/package-summary.html">Namespace</a></li>
+                    <li class="active">Class</li>
+                    <li><a href="../template/package-tree.html">Template\Tree</a></li>
+                    <li><a href="../deprecated.html">Deprecated</a></li>
+                    <li><a href="../todo.html">Todo</a></li>
+                    <li><a href="../index-all.html">Index</a></li>
+                </ul>
+    </div>
+    <div class="small_links">
+        Summary: <a href="#summary_fields">Fields</a> | <a href="#summary_methods">Methods</a> | <a href="#summary_constructor">Constructor</a>
+        Details: <a href="#details_fields">Fields</a> | <a href="#details_methods">Methods</a> | <a href="#details_constructor">Constructor</a>
+    </div>
+</nav>
+                <hr />
+<div class="package">Namespace Template</div>
+<h1>Class CSS</h1>
+<div id="list">
+    <ul>
+        <li><strong>CSS</strong></li></ul></li>    </ul>
+</div>
+<hr />
+<p class="arguments">public  class <strong>CSS</strong></p>
+<div class="comment" id="overview_description">CSS prefixer and optimizer.<br /> Reads css code, automatically inserts browser-specific prefixes and compresses<br /> the code with removing comments, two or more consecutive spaces,<br /> newline characters and tabs, spaces, if a curly bracket, colon,<br /> semicolon or comma is placed before or after them.<br /> There is a possibility of caching the result.<br /> It is important to set the correct installation of access rights to the cache directory.<br /> This program requires PHP 5.4+</div>
+<div class="finfo">
+    <table class="hid">
+            <tr>
+            <td class="hid left w_100">Program</td>
+            <td class="hid right w_100 lilac">&nbsp;</td>
+                            <td class="hid" colspan="2">CSS prefixer and optimizer.</td>
+                    </tr>
+            <tr>
+            <td class="hid left w_100">Version</td>
+            <td class="hid right w_100 lilac">&nbsp;</td>
+                            <td class="hid" colspan="2">1.0</td>
+                    </tr>
+            <tr>
+            <td class="hid left w_100">File</td>
+            <td class="hid right w_100 lilac">&nbsp;</td>
+                            <td class="hid" colspan="2">css.class.php</td>
+                    </tr>
+            <tr>
+            <td class="hid left w_100">Author</td>
+            <td class="hid right w_100 lilac">&nbsp;</td>
+                            <td class="hid" colspan="2">Victor Nabatov &lt;greenray.spb@gmail.com&gt;</td>
+                    </tr>
+            <tr>
+            <td class="hid left w_100">Copyright</td>
+            <td class="hid right w_100 lilac">&nbsp;</td>
+                            <td class="hid" colspan="2">(c) 2016 Victor Nabatov</td>
+                    </tr>
+            <tr>
+            <td class="hid left w_100">License</td>
+            <td class="hid right w_100 lilac">&nbsp;</td>
+                            <td class="hid" colspan="2">Creative Commons Attribution-ShareAlike 4.0 International Public License</td>
+                    </tr>
+        </table>
+</div>
+    <table id="summary_fields">
+        <tr><th colspan="2">Fields: summary</th></tr>
+                    <tr>
+                <td class="type w_200">private  boolean</td>
+                <td class="description">
+                    <pre><a href="#$cache"><span class="green">$cache</span></a> = TRUE</pre>
+                    <p class="description">TRUE if caching is allowed</p>
+                </td>
+            </tr>
+                    <tr>
+                <td class="type w_200">private  string</td>
+                <td class="description">
+                    <pre><a href="#$css"><span class="green">$css</span></a> = <span class="red">''</span></pre>
+                    <p class="description">CSS code that is executing</p>
+                </td>
+            </tr>
+                    <tr>
+                <td class="type w_200">private  array</td>
+                <td class="description">
+                    <pre><a href="#$styles"><span class="green">$styles</span></a> = []</pre>
+                    <p class="description">The browser-specific prefixes.</p>
+                </td>
+            </tr>
+            </table>
+    <table id="summary_constructor">
+        <tr><th colspan="2">Constructor: summary</th></tr>
+        <tr>
+            <td class="type w_200">public  void</td>
+            <td class="description">
+                <p><a href="#__construct"><strong><span class="black">__construct</span></strong></a>(<span class="lilac">boolean</span> <span class="blue">$cache</span>, <span class="lilac">boolean</span> <span class="blue">$gzip</span>)</p>
+                <p class="description">Class constructor.</p>
+            </td>
+        </tr>
+    </table>
+    <table id="summary_methods">
+        <tr><th colspan="2">Methods: summary</th></tr>
+                    <tr>
+                <td class="type w_200">public  string</td>
+                <td class="description">
+                    <p><a href="#compress"><strong><span class="black">compress</span></strong></a> (<span class="lilac">string</span> <span class="blue">$file</span>)</p>
+                    <p class="description">Class main method.</p>
+                </td>
+            </tr>
+                    <tr>
+                <td class="type w_200">private  void</td>
+                <td class="description">
+                    <p><a href="#import"><strong><span class="black">import</span></strong></a> (<span class="lilac">string</span> <span class="blue">$dir</span>)</p>
+                    <p class="description">Handles rule "@import".</p>
+                </td>
+            </tr>
+                    <tr>
+                <td class="type w_200">private  void</td>
+                <td class="description">
+                    <p><a href="#setPrefixes"><strong><span class="black">setPrefixes</span></strong></a> ()</p>
+                    <p class="description">Generates CSS3 properties with browser-specific prefixes.</p>
+                </td>
+            </tr>
+                    <tr>
+                <td class="type w_200">private  mixed</td>
+                <td class="description">
+                    <p><a href="#getFromCache"><strong><span class="black">getFromCache</span></strong></a> (<span class="lilac">string</span> <span class="blue">$file</span>)</p>
+                    <p class="description">Gets a compiled file from the cache.</p>
+                </td>
+            </tr>
+            </table>
+    <h2 id="details_fields">Fields: details</h2>
+            <div class="location">css.class.php at line 25</div>
+        <pre class="arguments" id="Undefined $cache">private  boolean <strong><span class="green">$cache</span></strong> = TRUE</pre>
+        <div class="details">TRUE if caching is allowed</div>
+        <hr />
+            <div class="location">css.class.php at line 28</div>
+        <pre class="arguments" id="Undefined $css">private  string <strong><span class="green">$css</span></strong> = <span class="red">''</span></pre>
+        <div class="details">CSS code that is executing</div>
+        <hr />
+            <div class="location">css.class.php at line 37</div>
+        <pre class="arguments" id="Undefined $styles">private  array <strong><span class="green">$styles</span></strong> = [<br />        <span class="red">'align-content'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'align-items'</span>   => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'align-self'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'animation'</span>                 => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-delay'</span>           => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-direction'</span>       => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-duration'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-fill-mode'</span>       => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-iteration-count'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-name'</span>            => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-play-state'</span>      => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-timing-function'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'backface-visibility'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'background-clip'</span>   => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'background-origin'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'background-size'</span>   => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'border-image'</span>               => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-image-outset'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-image-repeat'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-image-source'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-image-width'</span>         => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, 
+<span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-radius'</span>              => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-top-left-radius'</span>     => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-top-right-radius'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-bottom-right-radius'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-bottom-left-radius'</span>  => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'box-align'</span>         => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-direction'</span>     => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-flex'</span>          => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-flex-group'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-lines'</span>         => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-ordinal-group'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-orient'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-pack'</span>          => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-shadow'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-sizing'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'column-count'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-fill'</span>         => [<span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-gap'</span>          => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-rule'</span>         => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-rule-color'</span>   => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-rule-style'</span>   => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-rule-width'</span>   => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-span'</span>         => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-width'</
+span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'columns'</span>             => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'document'</span>=> [<span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'filter'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'flex-basis'</span>     => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'flex-direction'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'fullscreen'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'hyphens'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'image-rendering'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'keyframes'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'object-fit'</span> => [<span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'opacity'</span> => [<span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'orient'</span> => [<span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'perspective'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'perspective-origin'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'placeholder'</span> => [<span class="red">'-webkit-input-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-input-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'selection'</span> => [<span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'tab-size'</span>  => [<span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'text-overflow'</span> => [<span class="red">'-ms-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'transform'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'transform-origin'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'transform-style'</span>  => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'transition'</span>                 => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'transition-delay'</span>           => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'transition-duration'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, 
+<span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'transition-property'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'transition-timing-function'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'linear-gradient'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'radial-gradient'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'repeating-linear-gradient'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'repeating-radial-gradient'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'user-modify'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'user-select'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'viewport'</span> => [<span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'writing-mode'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>]<br />    ]</pre>
+        <div class="details">The browser-specific prefixes.<br /> This is not a complete list but the most used css properties.<br /> So it can easily be extended.</div>
+        <hr />
+        <h2 id="details_constructor">Constructor: details</h2>
+    <div class="location">css.class.php at line 45</div>
+    <code class="arguments" id="__construct">public  void <strong>__construct</strong>(<span class="lilac">boolean</span> <span class="blue">$cache</span>, <span class="lilac">boolean</span> <span class="blue">$gzip</span>)</code>
+    <div class="details">
+            <p class="description">Class constructor.</p>
+        <div class="finfo">
+    <table class="hid">
+            <tr>
+            <td class="hid left w_100">Parameters</td>
+            <td class="hid right w_100 lilac">boolean</td>
+                            <td class="hid blue w_100">$cache</td>
+                <td class="hid">Is cache allowed?</td>
+                    </tr>
+            <tr>
+            <td class="hid left w_100">&nbsp</td>
+            <td class="hid right w_100 lilac">boolean</td>
+                            <td class="hid blue w_100">$gzip</td>
+                <td class="hid">Is gzip allowed?</td>
+                    </tr>
+        </table>
+</div>
+    </div>
+    <h2 id="details_methods">Methods: details</h2>
+            <div class="location">css.class.php at line 61</div>
+        <code class="arguments" id="compress">public  string <strong>compress</strong> (<span class="lilac">string</span> <span class="blue">$file</span>)</code>
+        <div class="details">
+                    <p class="description">Class main method.<br /> Handles directive "@import".<br /> Generates CSS3 properties with browser-specific prefixes.<br /> Removes unneeded characters, see comments.<br /> Works with cache and gzip.</p>
+            <div class="finfo">
+    <table class="hid">
+            <tr>
+            <td class="hid left w_100">Parameters</td>
+            <td class="hid right w_100 lilac">string</td>
+                            <td class="hid blue w_100">$file</td>
+                <td class="hid">CSS file</td>
+                    </tr>
+            <tr>
+            <td class="hid left w_100">Return</td>
+            <td class="hid right w_100 lilac">string</td>
+                            <td class="hid" colspan="2">Prefixed and compressed CSS</td>
+                    </tr>
+        </table>
+</div>
+        </div>
+        <hr />
+            <div class="location">css.class.php at line 115</div>
+        <code class="arguments" id="import">private  void <strong>import</strong> (<span class="lilac">string</span> <span class="blue">$dir</span>)</code>
+        <div class="details">
+                    <p class="description">Handles rule "@import".</p>
+            <div class="finfo">
+    <table class="hid">
+            <tr>
+            <td class="hid left w_100">Parameters</td>
+            <td class="hid right w_100 lilac">string</td>
+                            <td class="hid blue w_100">$dir</td>
+                <td class="hid">CSS file's directory</td>
+                    </tr>
+        </table>
+</div>
+        </div>
+        <hr />
+            <div class="location">css.class.php at line 129</div>
+        <code class="arguments" id="setPrefixes">private  void <strong>setPrefixes</strong> ()</code>
+        <div class="details">
+                    <p class="description">Generates CSS3 properties with browser-specific prefixes.</p>
+                    </div>
+        <hr />
+            <div class="location">css.class.php at line 179</div>
+        <code class="arguments" id="getFromCache">private  mixed <strong>getFromCache</strong> (<span class="lilac">string</span> <span class="blue">$file</span>)</code>
+        <div class="details">
+                    <p class="description">Gets a compiled file from the cache.</p>
+            <div class="finfo">
+    <table class="hid">
+            <tr>
+            <td class="hid left w_100">Parameters</td>
+            <td class="hid right w_100 lilac">string</td>
+                            <td class="hid blue w_100">$file</td>
+                <td class="hid">CSS file</td>
+                    </tr>
+            <tr>
+            <td class="hid left w_100">Return</td>
+            <td class="hid right w_100 lilac">mixed</td>
+                            <td class="hid" colspan="2">Data from cache or FALSE</td>
+                    </tr>
+        </table>
+</div>
+        </div>
+        <hr />
+                    <nav class="menu_main center"><div class="menu">
+            <ul>
+                    <li><a href="../index.html">Overview</a></li>
+                    <li><a href="../template/package-summary.html">Namespace</a></li>
+                    <li class="active">Class</li>
+                    <li><a href="../template/package-tree.html">Template\Tree</a></li>
+                    <li><a href="../deprecated.html">Deprecated</a></li>
+                    <li><a href="../todo.html">Todo</a></li>
+                    <li><a href="../index-all.html">Index</a></li>
+                </ul>
+    </div>
+    <div class="small_links">
+        Summary: <a href="#summary_fields">Fields</a> | <a href="#summary_methods">Methods</a> | <a href="#summary_constructor">Constructor</a>
+        Details: <a href="#details_fields">Fields</a> | <a href="#details_methods">Methods</a> | <a href="#details_constructor">Constructor</a>
+    </div>
+</nav>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="content">
+            <div class="copyright center">Generated by <a href="https://github.com/Greenray/phpAPI" target="_blank">phpAPI</a>: PHP Documentation Creator ver. 5.0 &copy; 2015 - 2016 Greenray</div>
+        </div>
+    </div>
+</body>
+</html>

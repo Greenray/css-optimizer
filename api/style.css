@@ -1,0 +1,96 @@
+* { margin: 0; padding: 0 }
+html,body,abbr,b,blockquote,caption,code,dd,div,dl,dt,em,footer,h1,h2,h3,h4,h5,h6,
+header,img,li,label,nav,ol,p,pre,small,span,strong,sub,sup,table,tbody,
+td,th,tr,ul { background: transparent; border: 0; margin: 0; outline: 0; padding: 0; vertical-align: baseline }
+body        { background: #fff; color: #000; font: 13px normal arial, helvetica, verdana, sans-serif; line-height: 1; padding: 0 0 0 3px }
+a           { background: transparent; color: #00f; font-size: 100%; margin: 0; padding: 0; text-decoration: none; vertical-align: baseline }
+abbr[title] { border-bottom: 1px dotted; cursor: help }
+html, body  { height: 100%; width: 100% }
+
+#page   { height: auto !important; overflow: hidden }
+caption { background: #ecede5; border: 1px solid #ccc; font-weight: bold; font-size: 100%; margin-bottom: 0; padding: 3px 5px; text-align: left }
+.header { background-color: #cee; display: block; font: bold 14pt georgia, arial, helvetica, verdana, sans-serif; padding: 10px 0; width: 100% }
+.panel  { background: #cee; display: block; float: left; height: auto; width: 20% }
+.main   { background: #cee; display: block; height: auto; width: auto }
+.footer { background-color: #999966; bottom: 0; display: block; height: 30px; width: 100% }
+
+.content       { min-height: 100%; padding: 0 10px; position: relative; overflow: auto; z-index: 0 }
+.content h1,
+.content h2    { background: #cee; text-align: center }
+.content h1    { font-size: 120% }
+.content h2    { font-size: 100% }
+.content ul    { background: #ffffc5; border: 1px black solid; list-style: disc inside; margin: 0 }
+.content ul li { padding: 2px 10px 0 5px }
+.main .content { background: #fff }
+
+div.comment           {}
+div.details           { margin: 10px 20px }
+div.menu              { padding: 5px 0 }
+div.menu h1           { font-size: 120%; font-style: italic; padding: 0 4px; margin: 0 }
+div.menu ul           { background: #cee; list-style: none; margin: 0 }
+div.menu ul li        { display: inline; font-size: 100%; font-weight: bold; padding: 0 4px }
+div.menu ul li.active { background: #00008c }
+div.small_links       { margin: 8px }
+div.package           { font-weight: bold; font-size: 12pt; margin: 10px }
+div.location,
+a.location    { display: block; float: right; margin: 5px 10px 0 0 }
+footer,menu   { display: block; margin: 0 0 10px 0 }
+h1,h2,h3,h4,
+h5,h6,ol,p,ul { padding: 5px }
+dd            { margin: 5px 0 0 40px }
+dt            { font-weight: bold; margin: 10px 0 10px 5px }
+h1            { font-size: 140% }
+h2            { font-size: 120% }
+hr            { border: 0; border-top: 1px solid #000; display: block; height: 1px; margin: 5px 0; padding: 0 }
+input,select  { vertical-align: middle }
+nav ul        { list-style: none }
+nav           { display: block }
+ol, ul        { margin-left: 30px }
+pre, code     { font-family: monospace; }
+pre.tree      { margin: 10px 0 10px 100px }
+table, th, td { border: 1px solid #000 }
+td            { padding: 2px 4px }
+td p          { margin: 0; padding: 0 }
+td.type       { text-align: right; vertical-align: top }
+table         { border-collapse: collapse; border-spacing: 0; margin: 10px 0; width: 100% }
+table.hid     { padding: 5px; width: 100% }
+th,
+#details_globals, #details_functions, #details_fields, #details_constructor, #details_constants,
+#details_methods { background: #ccf; font-size: 120%; padding: 2px 15px; text-align: left }
+p                { margin-left: 10px }
+p.list           { margin-left: 0px }
+code.arguments,
+p.arguments,
+pre.arguments    { display: block; margin: 10px 5px }
+table.inherit th { background: #eef; font-size: 120% }
+td p.description { margin: 2px 0 0 20px }
+#definition h1   { margin: 0 0 10px }
+#definition h2   { background: #ccf; border: 2px solid #999; font-size: 120%; padding: 2px 0 2px 100px; text-align: left }
+
+#list       { margin: 5px 0 15px }
+#list ul    { border: 0; list-style: inside none none; padding: 0 }
+#list ul li { padding: 0 0 0 20px }
+#list ul ul { list-style-image: url("./resources/nested.png"); padding: 5px }
+#tree ul ul { margin-top: 0; margin-bottom: 0 }
+
+.active  { color: white }
+.black   { color: black }
+.blue    { color: blue }
+.center  { text-align: center }
+.footer  { background: #cee; overflow: hidden; position: relative; }
+.finfo   { background: #ececec; border-radius: 5px; margin: 10px auto; padding:2px; width: 90%; -webkit-border-radius: 5px; -moz-border-radius: 5px }
+.inherit { margin: 10px 0 }
+.green   { color: green }
+.hid     { border: 0 }
+.inherit td { border: 0 }
+.left    { text-align: left }
+.lilac   { color: #cc0099 }
+.name    { width: 400px }
+.red     { color: red }
+.right   { text-align: right }
+.w_100   { width: 100px }
+.w_200   { width: 200px }
+.w_300   { width: 300px }
+.w_400   { width: 400px }
+
+.copyright { padding: 10px }
