@@ -172,44 +172,42 @@ class CSS {
             $this->css = $this->getFromCache($cached);
         }
         if ($this->css === FALSE) {
-            if (is_readable($file)) {
-                $pathinfo = pathinfo($file);
-                $this->css = file_get_contents($file);
-                #
-                # Processing rule @import
-                #
-                $this->import($pathinfo['dirname']);
-                #
-                # Set the prefixes of browsers
-                #
-                $this->setPrefixes();
-                #
-                # Remove two or more consecutive spaces
-                #
-                $this->css = preg_replace('# {2,}#', '', $this->css);
-                $this->css = str_replace([' 0px', ' 0em', ' 0ex', ' 0cm', ' 0mm', ' 0in', ' 0pt', ' 0pc'],  '0', $this->css);
-                $this->css = str_replace([':0px', ':0em', ':0ex', ':0cm', ':0mm', ':0in', ':0pt', ':0pc'], ':0', $this->css);
-                #
-                # Remove the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them
-                #
-                $this->css = preg_replace('#\s*([\{:;,])\s*#', '$1', $this->css);
-                #
-                # Remove newline characters and tabs
-                #
-                        #
-                        # Readable result (remove after testing)
-                        #
-                        file_put_contents(CACHE.$cached.'.readable.css', $this->css, LOCK_EX);
-                        #
-                        #
-                $this->css = str_replace(["\r\n", "\r", "\n", "\t"], '', $this->css);
-                #
-                # Place the compiled data into cache
-                # For clarity, a simple file name is used, but can be applied encoding
-                #
-                if ($this->cache === TRUE) {
-                    file_put_contents(CACHE.$cached, $this->css, LOCK_EX);
-                }
+            $pathinfo = pathinfo($file);
+            $this->css = file_get_contents($file);
+            #
+            # Processing rule @import
+            #
+            $this->import($pathinfo['dirname']);
+            #
+            # Set the prefixes of browsers
+            #
+            $this->setPrefixes();
+            #
+            # Remove two or more consecutive spaces
+            #
+            $this->css = preg_replace('# {2,}#', '', $this->css);
+            $this->css = str_replace([' 0px', ' 0em', ' 0ex', ' 0cm', ' 0mm', ' 0in', ' 0pt', ' 0pc'],  '0', $this->css);
+            $this->css = str_replace([':0px', ':0em', ':0ex', ':0cm', ':0mm', ':0in', ':0pt', ':0pc'], ':0', $this->css);
+            #
+            # Remove the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them
+            #
+            $this->css = preg_replace('#\s*([\{:;,])\s*#', '$1', $this->css);
+            #
+            # Remove newline characters and tabs
+            #
+                    #
+                    # Readable result (remove after testing)
+                    #
+                    file_put_contents(CACHE.$cached.'.readable.css', $this->css, LOCK_EX);
+                    #
+                    #
+            $this->css = str_replace(["\r\n", "\r", "\n", "\t"], '', $this->css);
+            #
+            # Place the compiled data into cache
+            # For clarity, a simple file name is used, but can be applied encoding
+            #
+            if ($this->cache === TRUE) {
+                file_put_contents(CACHE.$cached, $this->css, LOCK_EX);
             }
         }
         return $this->css;
