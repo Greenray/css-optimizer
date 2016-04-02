@@ -60,11 +60,15 @@ class CSS {
         'border-image-repeat'        => ['-webkit-', '-moz-', '-o-', ''],
         'border-image-source'        => ['-webkit-', '-moz-', '-o-', ''],
         'border-image-width'         => ['-webkit-', '-moz-', '-o-', ''],
-        'border-radius'              => ['-webkit-', '-moz-', ''],
-        'border-top-left-radius'     => ['-webkit-', '-moz-', ''],
-        'border-top-right-radius'    => ['-webkit-', '-moz-', ''],
-        'border-bottom-right-radius' => ['-webkit-', '-moz-', ''],
-        'border-bottom-left-radius'  => ['-webkit-', '-moz-', ''],
+        'border-radius'              => ['-webkit-', '-khtml-', '-moz-', ''],
+        'border-top-left-radius'     => ['-webkit-', '-khtml-', '-moz-', ''],
+        'border-top-right-radius'    => ['-webkit-', '-khtml-', '-moz-', ''],
+        'border-bottom-right-radius' => ['-webkit-', '-khtml-', '-moz-', ''],
+        'border-bottom-left-radius'  => ['-webkit-', '-khtml-', '-moz-', ''],
+        'border-radius-topleft'      => ['-webkit-', '-khtml-', '-moz-', ''],
+        'border-radius-topright'     => ['-webkit-', '-khtml-', '-moz-', ''],
+        'border-radius-bottomright'  => ['-webkit-', '-khtml-', '-moz-', ''],
+        'border-radius-bottomleft'   => ['-webkit-', '-khtml-', '-moz-', ''],
 
         'box-align'         => ['-webkit-', '-moz-', '-ms-', ''],
         'box-direction'     => ['-webkit-', '-moz-', '-ms-', ''],
@@ -105,7 +109,7 @@ class CSS {
 
         'object-fit' => ['-o-', ''],
 
-        'opacity' => ['-moz-', ''],
+        'opacity' => ['-khtml-', '-moz-', ''],
 
         'orient' => ['-moz-', ''],
 
@@ -186,8 +190,25 @@ class CSS {
             # Remove two or more consecutive spaces
             #
             $this->css = preg_replace('# {2,}#', '', $this->css);
-            $this->css = str_replace([' 0px', ' 0em', ' 0ex', ' 0cm', ' 0mm', ' 0in', ' 0pt', ' 0pc'],  '0', $this->css);
-            $this->css = str_replace([':0px', ':0em', ':0ex', ':0cm', ':0mm', ':0in', ':0pt', ':0pc'], ':0', $this->css);
+            #
+            # Replace 0[type] values with 0
+            #
+            $this->css = preg_replace('/([^\\\\]\:|\s)0(?:em|ex|ch|rem|vw|vh|vm|vmin|cm|mm|in|px|pt|pc|%)/iS', '${1}0', $this->css);
+//            $this->css = str_replace([' 0px', ' 0em', ' 0ex', ' 0cm', ' 0mm', ' 0in', ' 0pt', ' 0pc'],  '0', $this->css);
+//            $this->css = str_replace([':0px', ':0em', ':0ex', ':0cm', ':0mm', ':0in', ':0pt', ':0pc'], ':0', $this->css);
+            #
+            # Replace 0 0; or 0 0 0; or 0 0 0 0; with 0
+            #
+            $this->css = preg_replace('/\:0(?: 0){1,3}(;|\}| \!)/', ':0$1', $this->css);
+            #
+            # Remove leading zeros from integer and float numbers preceded by : or a white-space
+            # -0.5 to -.5; 1.050 to 1.05
+            #
+            $this->css = preg_replace('/((?<!\\\\)\:|\s)(\-?)0+(\.?\d+)/S', '$1$2$3', $this->css);
+            #
+            # Optimize hex colors: #999999 to #999; #ffdd88 to #fd8;
+            #
+            $this->css = preg_replace('/([^=])#([a-f\\d])\\2([a-f\\d])\\3([a-f\\d])\\4([\\s;\\}])/i', '$1#$2$3$4$5', $this->css);
             #
             # Remove the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them
             #
