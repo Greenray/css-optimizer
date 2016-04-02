@@ -12,21 +12,21 @@
 #mid,
 #cap {
     display: block;
-    left: 0px;       /* This will be replaced with 0 ( 0px; )*/
+    left: 0px;       /* 0px will be replaced with 0 */
     position: relative;
-    top:0;           /* This will be replaced with 0 ( :0px; ) */
+    top:0050px;      /* 0050px will be replaced with 50px */
     width: 145px;
 }
 
 #point {
-    background: #fff;
+    background: #ffdd88;    /* #ffdd88 will be replaced with #fd8 */
     border: 1px solid #747270;
     border-radius: 5px;
     height: 19px;
 }
 
 #mid {
-    background: #999;
+    background: #999999;    /* #999999 will be replaced with #999 */
     box-shadow: 1px 2px 2px #000;
     height: auto;
     width: 115px;
@@ -37,5 +37,5 @@
     background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
     box-shadow: none;
     height: 7px;
-    transition: height .25s ease .1s;
+    transition: height 0.25s ease .1s;  /* 0.25s will be replaced with .25s */
 }
