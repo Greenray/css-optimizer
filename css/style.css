@@ -37,4 +37,19 @@ body {
 	padding: 5px;
 }
 
-.right { text-align: right; }
+.icon {
+    background: transparent;
+    white-space: nowrap;
+}
+.icon:before {
+    content: '';
+    background: transparent url(../../images/icons.png) no-repeat 16px 16px;
+    margin: 0 3px;
+    left: 0;
+    top: 3px;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    display: inline;
+    display: inline-block;
+}

@@ -152,7 +152,6 @@ class CSS {
      * Class constructor.
      *
      * @param boolean $cache Is cache allowed?
-     * @param boolean $gzip  Is gzip allowed?
      */
 	public function __construct($cache = TRUE) {
         $this->css   = '';
@@ -164,8 +163,8 @@ class CSS {
      *
      * Handles directive "@import".
      * Generates CSS3 properties with browser-specific prefixes.
+     * Replaces images references with base64_encoded data.
      * Removes unneeded characters, see comments.
-     * Works with cache and gzip.
      *
      * @param  string $file CSS file
      * @return string       Prefixed and compressed CSS
@@ -182,6 +181,7 @@ class CSS {
             # Processing rule @import
             #
             $this->import($pathinfo['dirname']);
+            $this->images();
             #
             # Set the prefixes of browsers
             #
@@ -194,8 +194,6 @@ class CSS {
             # Replace 0[type] values with 0
             #
             $this->css = preg_replace('/([^\\\\]\:|\s)0(?:em|ex|ch|rem|vw|vh|vm|vmin|cm|mm|in|px|pt|pc|%)/iS', '${1}0', $this->css);
-//            $this->css = str_replace([' 0px', ' 0em', ' 0ex', ' 0cm', ' 0mm', ' 0in', ' 0pt', ' 0pc'],  '0', $this->css);
-//            $this->css = str_replace([':0px', ':0em', ':0ex', ':0cm', ':0mm', ':0in', ':0pt', ':0pc'], ':0', $this->css);
             #
             # Replace 0 0; or 0 0 0; or 0 0 0 0; with 0
             #
@@ -213,15 +211,15 @@ class CSS {
             # Remove the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them
             #
             $this->css = preg_replace('#\s*([\{:;,])\s*#', '$1', $this->css);
-            #
-            # Remove newline characters and tabs
-            #
                     #
                     # Readable result (remove after testing)
                     #
                     file_put_contents(CACHE.$cached.'.readable.css', $this->css, LOCK_EX);
                     #
                     #
+            #
+            # Remove newline characters and tabs
+            #
             $this->css = str_replace(["\r\n", "\r", "\n", "\t"], '', $this->css);
             #
             # Place the compiled data into cache
@@ -235,7 +233,7 @@ class CSS {
     }
 
     /**
-     * Handles rule "@import".
+     * Handles the rule "@import".
      * Recognizes the rules:
      * @import url("dir/style.css");
      * @import url(style.css);
@@ -249,8 +247,22 @@ class CSS {
             $match[1] = array_reverse($match[1]);
             foreach ($match[0] as $key => $import) {
                 $this->css = str_replace($match[0][$key], '', $this->css);
-                $file      = str_replace('"', '', $match[1][$key]);
+                $file      = str_replace(['"', '\''], '', $match[1][$key]);
                 $this->css = file_get_contents($dir.DS.$file).PHP_EOL.$this->css;
+            }
+        }
+    }
+
+    /** Replace images references with base64_encoded data. */
+    private function images() {
+        preg_match_all('/background:(.*?) url\(([\w\'\"\/.]*)\)(.*?);/', $this->css, $match);
+        if (!empty($match[2])) {
+            foreach ($match[2] as $key => $image) {
+                $file      = str_replace(['"', '\'', '../'], '', $match[2][$key]);
+                $filetype  = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                $file      = file_get_contents($file);
+                $encoded   = str_replace($image, 'data:image/'.$filetype.';base64,'.base64_encode($file), $match[2][$key]);
+                $this->css = str_replace($image, $encoded, $this->css);
             }
         }
     }
