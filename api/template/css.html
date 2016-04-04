@@ -117,7 +117,7 @@
         <tr>
             <td class="type w_200">public  void</td>
             <td class="description">
-                <p><a href="#__construct"><strong><span class="black">__construct</span></strong></a>(<span class="lilac">boolean</span> <span class="blue">$cache</span>, <span class="lilac">boolean</span> <span class="blue">$gzip</span>)</p>
+                <p><a href="#__construct"><strong><span class="black">__construct</span></strong></a>(<span class="lilac">boolean</span> <span class="blue">$cache</span>)</p>
                 <p class="description">Class constructor.</p>
             </td>
         </tr>
@@ -135,7 +135,14 @@
                 <td class="type w_200">private  void</td>
                 <td class="description">
                     <p><a href="#import"><strong><span class="black">import</span></strong></a> (<span class="lilac">string</span> <span class="blue">$dir</span>)</p>
-                    <p class="description">Handles rule "@import".</p>
+                    <p class="description">Handles the rule "@import".</p>
+                </td>
+            </tr>
+                    <tr>
+                <td class="type w_200">private  void</td>
+                <td class="description">
+                    <p><a href="#images"><strong><span class="black">images</span></strong></a> ()</p>
+                    <p class="description">Replace images references with base64_encoded data.</p>
                 </td>
             </tr>
                     <tr>
@@ -167,8 +174,8 @@
         <div class="details">The browser-specific prefixes.<br /> This is not a complete list but the most used css properties.<br /> So it can easily be extended.</div>
         <hr />
         <h2 id="details_constructor">Constructor: details</h2>
-    <div class="location">css.class.php at line 45</div>
-    <code class="arguments" id="__construct">public  void <strong>__construct</strong>(<span class="lilac">boolean</span> <span class="blue">$cache</span>, <span class="lilac">boolean</span> <span class="blue">$gzip</span>)</code>
+    <div class="location">css.class.php at line 44</div>
+    <code class="arguments" id="__construct">public  void <strong>__construct</strong>(<span class="lilac">boolean</span> <span class="blue">$cache</span>)</code>
     <div class="details">
             <p class="description">Class constructor.</p>
         <div class="finfo">
@@ -179,20 +186,14 @@
                             <td class="hid blue w_100">$cache</td>
                 <td class="hid">Is cache allowed?</td>
                     </tr>
-            <tr>
-            <td class="hid left w_100">&nbsp</td>
-            <td class="hid right w_100 lilac">boolean</td>
-                            <td class="hid blue w_100">$gzip</td>
-                <td class="hid">Is gzip allowed?</td>
-                    </tr>
         </table>
 </div>
     </div>
     <h2 id="details_methods">Methods: details</h2>
-            <div class="location">css.class.php at line 61</div>
+            <div class="location">css.class.php at line 60</div>
         <code class="arguments" id="compress">public  string <strong>compress</strong> (<span class="lilac">string</span> <span class="blue">$file</span>)</code>
         <div class="details">
-                    <p class="description">Class main method.<br /> Handles directive "@import".<br /> Generates CSS3 properties with browser-specific prefixes.<br /> Removes unneeded characters, see comments.<br /> Works with cache and gzip.</p>
+                    <p class="description">Class main method.<br /> Handles directive "@import".<br /> Generates CSS3 properties with browser-specific prefixes.<br /> Replaces images references with base64_encoded data.<br /> Removes unneeded characters, see comments.</p>
             <div class="finfo">
     <table class="hid">
             <tr>
@@ -210,10 +211,10 @@
 </div>
         </div>
         <hr />
-            <div class="location">css.class.php at line 133</div>
+            <div class="location">css.class.php at line 131</div>
         <code class="arguments" id="import">private  void <strong>import</strong> (<span class="lilac">string</span> <span class="blue">$dir</span>)</code>
         <div class="details">
-                    <p class="description">Handles rule "@import".<br /> Recognizes the rules:</p>
+                    <p class="description">Handles the rule "@import".<br /> Recognizes the rules:</p>
             <div class="finfo">
     <table class="hid">
             <tr>
@@ -236,13 +237,19 @@
 </div>
         </div>
         <hr />
-            <div class="location">css.class.php at line 147</div>
+            <div class="location">css.class.php at line 145</div>
+        <code class="arguments" id="images">private  void <strong>images</strong> ()</code>
+        <div class="details">
+                    <p class="description">Replace images references with base64_encoded data.</p>
+                    </div>
+        <hr />
+            <div class="location">css.class.php at line 159</div>
         <code class="arguments" id="setPrefixes">private  void <strong>setPrefixes</strong> ()</code>
         <div class="details">
                     <p class="description">Generates CSS3 properties with browser-specific prefixes.</p>
                     </div>
         <hr />
-            <div class="location">css.class.php at line 197</div>
+            <div class="location">css.class.php at line 209</div>
         <code class="arguments" id="getFromCache">private  mixed <strong>getFromCache</strong> (<span class="lilac">string</span> <span class="blue">$file</span>)</code>
         <div class="details">
                     <p class="description">Gets a compiled file from the cache.</p>
