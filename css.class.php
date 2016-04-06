@@ -11,7 +11,7 @@
  * This program requires PHP 5.4+
  *
  * @program   CSS prefixer and optimizer.
- * @version   1.0
+ * @version   2.0
  * @package   Template
  * @file      css.class.php
  * @author    Victor Nabatov <greenray.spb@gmail.com>
@@ -318,7 +318,7 @@ class CSS {
                                 $parts = explode(':', $property);
                                 $parts[1] = ': '.$parts[1];
                                 $parts[0] = $match.$parts[0];
-                                $result  .= implode(':', $parts);
+                                $result  .= implode($parts);
                             } else {
                                 $parts = explode(':', $property);
                                 $parts[0] = $parts[0].':';
