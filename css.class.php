@@ -260,7 +260,7 @@ class CSS {
 
     /** Replace images references with base64_encoded data. */
     private function images() {
-        preg_match_all('/background:(.*?) url\(([\w\'\"\/.]*)\)(.*?);/', $this->css, $match);
+        preg_match_all('/background:(.*?) url\(([\w\'\"\/\.\-]*)\)(.*?);/', $this->css, $match);
         if (!empty($match[2])) {
             foreach ($match[2] as $key => $image) {
                 $file      = str_replace(['"', '\'', '../'], '', $match[2][$key]);
@@ -332,7 +332,7 @@ class CSS {
             }
         }
         $this->setPrefixesForRules($rules);
-        $this->setPrefixesPseudo($pseudo);
+        $this->setPrefixesForPseudo($pseudo);
     }
 
     /**
@@ -368,7 +368,7 @@ class CSS {
      *
      * @param array $pseudo Array of founded rules in css file
      */
-    private function setPrefixesPseudo($pseudo) {
+    private function setPrefixesForPseudo($pseudo) {
         foreach ($pseudo as $key => $rule) {
             $rule = str_replace(':', '', $rule);
             preg_match_all('#[a-z0-9_\[\]\"\=\:]+'.$rule.'[a-zA-Z0-9_\s\{\-\;\:\.\"\%\(\)\*\#]+\}#s', $this->css, $keys);
