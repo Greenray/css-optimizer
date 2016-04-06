@@ -94,8 +94,6 @@ class CSS {
         'column-width'        => ['-webkit-', '-moz-', ''],
         'columns'             => ['-webkit-', '-moz-', ''],
 
-        'document'=> ['-moz-', ''],
-
         'filter' => ['-webkit-', ''],
 
         'flex-basis'     => ['-webkit-', ''],
@@ -107,8 +105,6 @@ class CSS {
 
         'image-rendering' => ['-webkit-', '-moz-', '-o-', ''],
 
-        'keyframes' => ['-webkit-', '-moz-', '-o-', ''],
-
         'object-fit' => ['-o-', ''],
 
         'opacity' => ['-khtml-', '-moz-', ''],
@@ -117,10 +113,6 @@ class CSS {
 
         'perspective'        => ['-webkit-', '-moz-', ''],
         'perspective-origin' => ['-webkit-', '-moz-', ''],
-
-        'placeholder' => ['-webkit-input-', '-moz-', '-ms-input-', ''],
-
-        'selection' => ['-moz-', ''],
 
         'tab-size'  => ['-moz-', '-o-', ''],
 
@@ -151,7 +143,14 @@ class CSS {
 
         'viewport' => ['-ms-', ''],
 
-        'writing-mode' => ['-webkit-', '']
+        'writing-mode' => ['-webkit-', ''],
+
+        'document'  => ['-moz-', ''],
+        'keyframes' => ['-webkit-', '-moz-', '-o-', ''],
+        'viewport'  => ['-ms-', ''],
+
+        'placeholder' => ['-webkit-input-', '-moz-', '-ms-input-', ''],
+        'selection'   => ['-moz-', '']
     ];
 
 	/**
@@ -168,7 +167,7 @@ class CSS {
      * Class main method.
      *
      * Handles directive "@import".
-     * Generates CSS3 properties with browser-specific prefixes.
+     * Generates browser-specific prefixes.
      * Replaces images references with base64_encoded data.
      * Removes unneeded characters, see comments.
      *
@@ -216,7 +215,7 @@ class CSS {
             #
             # Remove the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them
             #
-            $this->css = preg_replace('#\s*([\{:;,])\s*#', '$1', $this->css);
+            $this->css = preg_replace('#\s*([\{:;,]) *#', '$1', $this->css);
                     #
                     # Readable result (remove after testing)
                     #
@@ -273,25 +272,42 @@ class CSS {
         }
     }
 
-    /** Generates CSS3 properties with browser-specific prefixes. */
+    /** Generates browser-specific prefixes. */
     private function setPrefixes() {
         #
         # Remove comments
         #
         $this->css = preg_replace('#(\/\*).*?(\*\/)#s', '', $this->css);
+        $styles = $this->styles;
         $values = [];
-        foreach ($this->styles as $property => $styles) {
-            preg_match_all('/[^-\{]'.$property.'/s', $this->css, $result);
-            if (!empty($result[0])) {
-                $values[] = array_unique($result[0]);
+        foreach ($styles as $property => $styles) {
+            preg_match('/[^-\{]'.$property.'/s', $this->css, $result);
+            if (!empty($result)) {
+                $values[] = array_unique($result);
+            } else {
+                #
+                # Remove rules unnecessary for further work
+                #
+                unset($this->styles[$property]);
             }
         }
+        $rules  = [];
+        $pseudo = [];
         foreach ($values as $value) {
+            $pos = strpos($value[0], '@');
+            if ($pos === 0) {
+                $rules[] = $value[0];
+            }
+            $pos = strpos($value[0], ':');
+            if ($pos === 0) {
+                $pseudo[] = $value[0];
+                continue;
+            }
             $value = trim($value[0]);
             #
             # Search properties from $this->styles list
             #
-            preg_match_all('#'.$value.':[a-zA-Z0-9\.\-\#|\d\s]+?;|::'.$value.' |@'.$value.' |[a-zA-Z\-]+: '.$value.'[\S+].+?;#s', $this->css, $keys);
+            preg_match_all('#'.$value.':[a-zA-Z0-9\.\-\#|\d\s][^\}]+?;|[a-zA-Z\-]+: '.$value.'[\S+].+?;#s', $this->css, $keys);
             foreach ($keys[0] as $property) {
                 foreach ($this->styles as $style => $prefixes) {
                     if ($style === $value) {
@@ -300,15 +316,70 @@ class CSS {
                             $pos = strpos($property, $value);
                             if ($pos === 0) {
                                 $parts = explode(':', $property);
-                                $parts[1] = ': '.$parts[1];
                                 $parts[0] = $match.$parts[0];
-                                $result  .= implode($parts);
+                                $result  .= implode(':', $parts);
                             } else {
                                 $parts = explode(':', $property);
                                 $parts[0] = $parts[0].':';
                                 $parts[1] = trim($parts[1]);
                                 $parts[1] = $match.$parts[1];
                                 $result  .= implode($parts);
+                            }
+                        }
+                        $this->css = str_replace($property, $result, $this->css);
+                    }
+                }
+            }
+        }
+        $this->setPrefixesForRules($rules);
+        $this->setPrefixesPseudo($pseudo);
+    }
+
+    /**
+     * Generates browser-specific prefixes for rules.
+     *
+     * @param array $rules Array of founded rules in css file
+     */
+    private function setPrefixesForRules($rules) {
+        foreach ($rules as $key => $rule) {
+            $rule = str_replace('@', '', $rule);
+            preg_match_all('#'.$rule.'[a-zA-Z0-9_\s\{\}\-\;\:\.\"\%\(\)\*\#]+#s', $this->css, $keys);
+            foreach ($keys[0] as $property) {
+                foreach ($this->styles as $style => $prefixes) {
+                    if ($style === $rule) {
+                        $result = '';
+                        foreach ($prefixes as $match) {
+                            $pos = strpos($property, $rule);
+                            if ($pos === 0) {
+                                $parts    = explode(':', $property);
+                                $parts[0] = '@'.$match.$parts[0];
+                                $result  .= implode(':', $parts);
+                            }
+                        }
+                        $this->css = str_replace('@'.$property, $result, $this->css);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Generates browser-specific prefixes for pseudoelements.
+     *
+     * @param array $pseudo Array of founded rules in css file
+     */
+    private function setPrefixesPseudo($pseudo) {
+        foreach ($pseudo as $key => $rule) {
+            $rule = str_replace(':', '', $rule);
+            preg_match_all('#[a-z0-9_\[\]\"\=\:]+'.$rule.'[a-zA-Z0-9_\s\{\-\;\:\.\"\%\(\)\*\#]+\}#s', $this->css, $keys);
+            foreach ($keys[0] as $property) {
+                foreach ($this->styles as $style => $prefixes) {
+                    if ($style === $rule) {
+                        $result = '';
+                        foreach ($prefixes as $match) {
+                            $pos = strpos($property, $rule);
+                            if ($pos !== FALSE) {
+                                $result .= str_replace($rule, $match.$rule, $property);
                             }
                         }
                         $this->css = str_replace($property, $result, $this->css);

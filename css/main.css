@@ -1,6 +1,16 @@
 /* main.css */
 @import url("vendor/normalize.css");
 @import url(style.css);
+
+input[type="search"]::placeholder {
+    color: #ffdd55;
+}
+
+p::selection {
+    color: #ff0000;
+    background: #ffffff;
+}
+
 #frame {
     background: gray;
     background-image: linear-gradient(180deg, #909090 0%, #3d3d3d 50%, #404040 100%);
@@ -38,4 +48,24 @@
     box-shadow: none;
     height: 7px;
     transition: height 0.25s ease .1s;  /* 0.25s will be replaced with .25s */
+}
+
+@viewport {
+    width: device-width;
+    zoom: 1;
+    max-zoom: 2;
+}
+
+@keyframes eye {
+    90% { transform: none; }
+    95% { transform: scaleY(0.1); }
+}
+
+@document regexp("https:.*") {
+    .ssl {
+        display: block;
+        background: #5bd4b6;
+        color: #fff;
+        padding: 20px;
+    }
 }
