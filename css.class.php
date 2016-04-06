@@ -316,6 +316,7 @@ class CSS {
                             $pos = strpos($property, $value);
                             if ($pos === 0) {
                                 $parts = explode(':', $property);
+                                $parts[1] = ': '.$parts[1];
                                 $parts[0] = $match.$parts[0];
                                 $result  .= implode(':', $parts);
                             } else {
