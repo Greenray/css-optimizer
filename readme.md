@@ -1,14 +1,14 @@
 CSS parser and optimizer.
 =========================
 
-Parses css code, automatically inserts browser-specific prefixes and compresses the code.
+Reads css code, automatically inserts browser-specific prefixes and compresses the code.
 There is a possibility of caching the result.
 
-This class does not generate errors, because in case of failure to write files in the cache, the browser will handle the css files as usual.
-In this case, it is important to follow the correct installation of access rights to the data directory (the cache).
+It is important to follow the correct installation of access rights to the data directory (the cache).
 
 ## Feachures
 
+* Handles css @import directive thus multiple files can be combined into one.
 * Automatically inserts browser-specific prefixes for defined css properties.
 * Removes two or more consecutive spaces.
 * Removes the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them.
@@ -23,6 +23,9 @@ This program requires PHP 5.4+
 
     /* File styles.css */
 
+    input[type="search"]::placeholder {
+        color: #ffdd55;
+    }
     .some_class {
         background: #1e5799;
         background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
@@ -38,6 +41,19 @@ This program requires PHP 5.4+
     }
 
 ## Result
+
+input[type="search"]::-webkit-input-placeholder{
+color:#fd5;
+}
+input[type="search"]::-moz-placeholder{
+color:#fd5;
+}
+input[type="search"]::-ms-input-placeholder{
+color:#fd5;
+}
+input[type="search"]::placeholder{
+color:#fd5;
+}
 
 .some_class{
 background:#1e5799;
