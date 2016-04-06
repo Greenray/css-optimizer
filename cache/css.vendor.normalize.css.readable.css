@@ -180,7 +180,7 @@ margin:1em 40px;
 
 
 hr{
--webkit-box-sizing::content-box;-moz-box-sizing::content-box;box-sizing::content-box;
+-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;
 height:0;
 overflow:visible;
 }
@@ -276,7 +276,7 @@ padding:.35em .625em .75em;
 
 
 legend{
--webkit-box-sizing::border-box;-moz-box-sizing::border-box;box-sizing::border-box;
+-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;
 color:inherit;
 display:table;
 max-width:100%;
@@ -294,7 +294,7 @@ overflow:auto;
 
 [type="checkbox"],
 [type="radio"]{
--webkit-box-sizing::border-box;-moz-box-sizing::border-box;box-sizing::border-box;
+-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;
 padding:0;
 }
 
