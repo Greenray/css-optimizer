@@ -10,6 +10,7 @@ It is important to follow the correct installation of access rights to the data 
 
     - Handles css @import directive thus multiple files can be combined into one.
     - Automatically inserts browser-specific prefixes for defined css properties.
+    - Replaces image references within CSS with base64_encoded data.
     - Removes two or more consecutive spaces.
     - Removes the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them.
     - Removes newline characters and tabs.
