@@ -9,7 +9,7 @@ It is important to follow the correct installation of access rights to the data 
 ----- FEACHURES -----
 
     - Handles css @import directive thus multiple files can be combined into one.
-    - Handles rules (ex.
+    - Handles rules (ex.@keyframes), pseudoelevents (ex. ::placeholder).
     - Automatically inserts browser-specific prefixes for defined css properties.
     - Replaces image references within CSS with base64_encoded data.
     - Optimizes the color settings (#00ff77 => #0f7) and property values (0px => 0, -0.5 => -.5).
