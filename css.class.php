@@ -192,26 +192,22 @@ class CSS {
             #
             $this->setPrefixes();
             #
-            # Remove two or more consecutive spaces
-            #
-            $this->css = preg_replace('# {2,}#', '', $this->css);
-            #
             # Replace 0[type] values with 0
             #
-            $this->css = preg_replace('/([^\\\\]\:|\s)0(?:em|ex|ch|rem|vw|vh|vm|vmin|cm|mm|in|px|pt|pc|%)/iS', '${1}0', $this->css);
+            $this->css = preg_replace('#([^\\\\]\:|\s)0(?:em|ex|ch|rem|vw|vh|vm|vmin|cm|mm|in|px|pt|pc|%)#iS', '${1}0', $this->css);
             #
             # Replace 0 0; or 0 0 0; or 0 0 0 0; with 0
             #
-            $this->css = preg_replace('/\:0(?: 0){1,3}(;|\}| \!)/', ':0$1', $this->css);
+            $this->css = preg_replace('#\:0(?: 0){1,3}(;|\}| \!)#', ':0$1', $this->css);
             #
             # Remove leading zeros from integer and float numbers preceded by : or a white-space
             # -0.5 to -.5; 1.050 to 1.05
             #
-            $this->css = preg_replace('/((?<!\\\\)\:|\s)(\-?)0+(\.?\d+)/S', '$1$2$3', $this->css);
+            $this->css = preg_replace('#((?<!\\\\)\:|\s)(\-?)0+(\.?\d+)#S', '$1$2$3', $this->css);
             #
             # Optimize hex colors: #999999 to #999; #ffdd88 to #fd8;
             #
-            $this->css = preg_replace('/([^=])#([a-f\\d])\\2([a-f\\d])\\3([a-f\\d])\\4([\\s;\\}])/i', '$1#$2$3$4$5', $this->css);
+            $this->css = preg_replace('#([^=])\#([a-f\\d])\\2([a-f\\d])\\3([a-f\\d])\\4([\\s;\\}])#i', '$1#$2$3$4$5', $this->css);
             #
             # Remove the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them
             #
@@ -221,11 +217,18 @@ class CSS {
                     #
                     file_put_contents(CACHE.$cached.'.readable.css', $this->css, LOCK_EX);
                     #
-                    #
             #
             # Remove newline characters and tabs
             #
             $this->css = str_replace(["\r\n", "\r", "\n", "\t"], '', $this->css);
+            #
+            # Remove last semicolon
+            #
+            $this->css = preg_replace('#\s*(\;\s*\})#', '}', $this->css);
+            #
+            # Remove two or more consecutive spaces
+            #
+            $this->css = preg_replace('# {2,}#', '', $this->css);
             #
             # Place the compiled data into cache
             # For clarity, a simple file name is used, but can be applied encoding
