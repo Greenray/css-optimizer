@@ -12,7 +12,7 @@ It is important to follow the correct installation of access rights to the data 
 * Handles rules (ex. __@keyframes__), pseudoelevents (ex. __::placeholder__).
 * Automatically inserts browser-specific prefixes for defined css properties.
 * Replaces image references within CSS with base64_encoded data.
-* Replaces fonts (.woff, .woff2 and .ttf) references within CSS rule __@font-face__ with base64_encoded data.
+* Replaces fonts (.woff, .woff2) references within CSS rule __@font-face__ with base64_encoded data.
 * Optimizes the color settings (#00ff77 => #0f7) and property values (0px => 0, -0.5 => -.5).
 * Removes two or more consecutive spaces.
 * Removes the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them.
