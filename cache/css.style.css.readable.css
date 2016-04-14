@@ -36,14 +36,6 @@ body{
 	padding:5px;
 }
 
-.quotetitle{
-	border:#000 solid 1px;
-	font-size:8pt;
-	font-style:italic;
-	margin:10px 0;
-	padding:5px;
-}
-
 .quotetext{
     background:#4C5A64;
     background:-webkit-linear-gradient(180deg,#6D818F 1%,#404F5A 60%,#2E3940 99%);background:-moz-linear-gradient(180deg,#6D818F 1%,#404F5A 60%,#2E3940 99%);background:-o-linear-gradient(180deg,#6D818F 1%,#404F5A 60%,#2E3940 99%);background:linear-gradient(180deg,#6D818F 1%,#404F5A 60%,#2E3940 99%);

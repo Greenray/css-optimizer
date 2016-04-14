@@ -11,7 +11,7 @@
  * This program requires PHP 5.4+
  *
  * @program   CSS prefixer and optimizer.
- * @version   2.0
+ * @version   3.0
  * @package   Template
  * @file      css.class.php
  * @author    Victor Nabatov <greenray.spb@gmail.com>
@@ -26,6 +26,12 @@ class CSS {
 
     /** @var string CSS code that is executing */
 	private $css = '';
+
+    /** @var boolean Base64 encoding allowed for images */
+	private $fonts = '';
+
+    /** @var boolean Base64 encoding allowed for fonts */
+	private $images = '';
 
     /**
      * The browser-specific prefixes.
@@ -49,7 +55,7 @@ class CSS {
         'animation-play-state'      => ['-webkit-', '-moz-', '-o-', ''],
         'animation-timing-function' => ['-webkit-', '-moz-', '-o-', ''],
 
-        'backface-visibility' => ['-webkit-', '-moz-', '-ms-', ''],
+        'backface-visibility' => ['-webkit-', '-moz-', ''],
 
         'background-clip'   => ['-moz-', ''],
         'background-origin' => ['-webkit-', '-moz-', '-o-', ''],
@@ -98,6 +104,13 @@ class CSS {
 
         'flex-basis'     => ['-webkit-', ''],
         'flex-direction' => ['-webkit-', ''],
+        'flex-flow'      => ['-webkit-', ''],
+        'flex-grow'      => ['-webkit-', ''],
+        'flex-shrink'    => ['-webkit-', ''],
+        'flex-wrap'      => ['-webkit-', ''],
+
+        'font-kerning'           => ['-webkit-', ''],
+        'font-variant-ligatures' => ['-webkit-', ''],
 
         'fullscreen' => ['-webkit-', '-moz-', '-ms-', ''],
 
@@ -158,9 +171,11 @@ class CSS {
      *
      * @param boolean $cache Is cache allowed?
      */
-	public function __construct($cache = TRUE) {
-        $this->css   = '';
-        $this->cache = $cache;
+	public function __construct($cache = TRUE, $images = TRUE, $fonts = TRUE) {
+        $this->css    = '';
+        $this->cache  = $cache;
+        $this->images = $images;
+        $this->fonts  = $fonts;
     }
 
     /**
@@ -187,6 +202,7 @@ class CSS {
             #
             $this->import($pathinfo['dirname']);
             $this->images();
+            $this->fonts();
             #
             # Set the prefixes of browsers
             #
@@ -244,12 +260,13 @@ class CSS {
      * Handles the rule "@import".
      * Recognizes the rules:
      * @import url("dir/style.css");
+     * @import url('dir/style.css');
      * @import url(style.css);
      *
      * @param string $dir CSS file's directory
      */
     private function import($dir) {
-        preg_match_all('/\@import url\(([\w\'\"\/.]*)\);/', $this->css, $match);
+        preg_match_all('#\@import url\(([\w\'\"\/.]*)\);#', $this->css, $match);
         if (!empty($match[0])) {
             $match[0] = array_reverse($match[0]);
             $match[1] = array_reverse($match[1]);
@@ -263,15 +280,35 @@ class CSS {
 
     /** Replace images references with base64_encoded data. */
     private function images() {
-        preg_match_all('/background:(.*?) url\(([\w\'\"\/\.\-]*)\)(.*?);/', $this->css, $match);
-        if (!empty($match[2])) {
-            foreach ($match[2] as $key => $image) {
-                $file      = str_replace(['"', '\'', '../'], '', $match[2][$key]);
-                $filetype  = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-                $file      = file_get_contents($file);
-                $encoded   = str_replace($image, 'data:image/'.$filetype.';base64,'.base64_encode($file), $match[2][$key]);
-                $this->css = str_replace($image, $encoded, $this->css);
-            }
+        preg_match_all('#background[\:|\-image\:]+[\s\w]*url\(([\w\'\"\/\.\-]+)\)#', $this->css, $match);
+        if (!empty($match[1])) {
+            $this->encode($match[1], 'image');
+        }
+    }
+
+    /** Replace fonts .woff and .woff2 references with base64_encoded data. */
+    private function fonts() {
+        preg_match_all('#[src:|| |\t]*url\(([\w\/\.\-\']+(woff|woff2)+\')\)#', $this->css, $match);
+        if (!empty($match[1])) {
+            $this->encode($match[1], 'font');
+        }
+
+    }
+
+    /**
+     * Encodes image or font.
+     * @param array  $data Reference to image or font
+     * @param string $mode What to encode: image or font
+     */
+    private function encode($data, $mode) {
+        foreach ($data as $key => $value) {
+            $file = str_replace(['../', '\''], '', $value);
+            $type = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            $file = file_get_contents($file);
+            if ($mode === 'image')
+                 $encoded = str_replace($value, 'data:image/'.$type.';base64,'.base64_encode($file), $value);
+            else $encoded = str_replace($value, 'data:application/font-'.$type.';charset=utf-8;base64,'.base64_encode($file), $value);
+            $this->css = str_replace($value, $encoded, $this->css);
         }
     }
 
