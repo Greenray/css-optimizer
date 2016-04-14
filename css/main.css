@@ -1,25 +1,9 @@
 /* main.css */
 @import url("vendor/normalize.css");
 @import url(style.css);
-@font-face {
-    font-family: 'scriptinaregular';
-    src: url('fonts/scriptina-webfont.eot');                                       /* IE9 Compat Modes */
-    src: url('fonts/scriptina-webfont.eot?#iefix') format('embedded-opentype');    /* IE6-IE8 */
-    src: url('fonts/scriptina-webfont.woff') format('woff'),                       /* Modern Browsers */
-         url('fonts/scriptina-webfont.woff2') format('woff2'),                     /* Modern Browsers */
-         url('fonts/scriptina-webfont.ttf') format('truetype'),                    /* Safari, Android, iOS */
-         url('fonts/scriptina-webfont.svg#scriptinaregular') format('svg');        /* iPad, iPhone with OS less than or equal to 4.1 */
-    font-weight: normal;
-    font-style: normal;
-}
 
 input[type="search"]::placeholder {
     color: #ffdd55;
-}
-
-.included_font {
-    font-family: scriptinaregular;
-    font-size: 40px;
 }
 
 p::selection {
