@@ -396,12 +396,13 @@ class CSS {
 
     /**
      * Encodes image or font.
+     * 
      * @param array  $data Reference to image or font
      * @param string $mode What to encode: image or font
      */
     private function encode($data, $mode) {
         foreach ($data as $key => $value) {
-            $file = str_replace(['../', '\''], '', $value);
+            $file = str_replace(['../', '\'', '"'], '', $value);
             $type = strtolower(pathinfo($file, PATHINFO_EXTENSION));
             $file = file_get_contents($file);
             if ($mode === 'image')
