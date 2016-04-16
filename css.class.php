@@ -188,11 +188,7 @@ class CSS {
         'selection'   => ['-moz-', '']
     ];
 
-	/**
-     * Class constructor.
-     *
-     * @param boolean $cache Is cache allowed?
-     */
+	/** Class constructor. */
 	public function __construct() {
         $this->css    = '';
         $this->config = parse_ini_file(CONFIG);
@@ -203,7 +199,9 @@ class CSS {
      *
      * Handles directive "@import".
      * Generates browser-specific prefixes.
-     * Replaces images references with base64_encoded data.
+     * Replaces images and fonts references with base64_encoded data.
+     * Optimizes the color settings (#00ff77 => #0f7) and property values (0px => 0, -0.5 => -.5).
+     * Converts rgb(43, 92, 160), rgb(16.9%, 36.1%, 62.7%), hsl(214.9,57.6%,39.8%) to hex value (#2b5ca0).
      * Removes unneeded characters, see comments.
      *
      * @param  string $file CSS file
