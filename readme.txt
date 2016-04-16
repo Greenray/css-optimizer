@@ -14,6 +14,7 @@ It is important to follow the correct installation of access rights to the data 
     - Replaces image references within CSS with base64_encoded data.
     - Replaces fonts (.woff, .woff2) references within CSS rule @font-face with base64_encoded data.
     - Optimizes the color settings (#00ff77 => #0f7) and property values (0px => 0, -0.5 => -.5).
+    - Converts rgb(43, 92, 160), rgb(16.9%, 36.1%, 62.7%), hsl(214.9,57.6%,39.8%) to hex value (#2b5ca0).
     - Removes two or more consecutive spaces.
     - Removes the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them.
     - Removes the last semicolon in the list of properties of the selector or the rule.

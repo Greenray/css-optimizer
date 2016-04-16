@@ -6,21 +6,22 @@ body {
 }
 
 .center { text-align: center; }
+
 .done {
     color: red;
-    font: 20px bold arial, verdana, helvetica, sans, serif, sans-serif,  "Times New Roman";
-    margin: 0 auto;
+    font: 20px bold arial, verdana, helvetica, sans;
+    margin: 10px auto;
     width: 88px;
 }
 
 .emoticon {
-    margin: 0 auto;
+    margin: 0 0 0 50px;
     height: 30px;
     width: 35px;
 }
 
 .license {
-    background: transparent url(../images/CC-BY-SA-LICENSE4.0.png) no-repeat;
+    background: transparent url(assets/images/CC-BY-SA-LICENSE4.0.png) no-repeat;
     margin: 50px auto;
     height: 31px;
     width: 88px;
@@ -36,13 +37,10 @@ body {
 	padding: 5px;
 }
 
-.quotetext {
+.someclass {
     background: #4C5A64;
     background: linear-gradient(180deg, #6D818F 1%, #404F5A 60%, #2E3940 99%);
 	border: #000 solid 1px;
     border-radius: 5px;
     box-sizing: content-box;
-	font: italic 9pt "Courier New", Courier, mono;
-	margin: 10px 0;
-	padding: 5px;
 }

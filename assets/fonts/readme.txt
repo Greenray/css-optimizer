@@ -1,0 +1,1 @@
+Please, Please take the font files from the repository https://github.com/Greenray/css-opimizer because phpclasses site is not allowed to upload them here.
