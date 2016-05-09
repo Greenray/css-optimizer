@@ -4,15 +4,15 @@ CSS parser and optimizer.
 Reads css code, automatically inserts browser-specific prefixes and compresses the code.
 There is a possibility of caching the result.
 
-It is important to follow the correct installation of access rights to the data directory (the cache).
-
 ## Feachures
+
+  Handles both external and embedded styles.
 
 * Handles css __@import__ directive thus multiple files can be combined into one.
 * Handles rules (ex. __@keyframes__), pseudoelevents (ex. __::placeholder__).
 * Automatically inserts browser-specific prefixes for defined css properties.
 * Replaces image references within CSS with base64_encoded data.
-* Replaces fonts (.woff, .woff2) references within CSS rule __@font-face__ with base64_encoded data.
+* Replaces fonts (.woff, .woff2, .eot, .ttf, .svg) references within CSS rule __@font-face__ with base64_encoded data.
 * Optimizes the color settings (#00ff77 => #0f7) and property values (0px => 0, -0.5 => -.5).
 * Converts rgb(43, 92, 160), rgb(16.9%, 36.1%, 62.7%), hsl(214.9,57.6%,39.8%) to hex value (#2b5ca0).
 * Removes two or more consecutive spaces.
@@ -113,7 +113,7 @@ transition:height .25s ease .1s;
 }
 }
 
-After finishing (removing newlines) the data file will be prepared, placed in one line.
+After finishing (removing newlines) the data file will be placed in one line.
 
 The original code: (https://github.com/Greenray/css-optimizer).
 Copyright (C) 2016 Victor Nabatov <greenray.spb@gmail.com>

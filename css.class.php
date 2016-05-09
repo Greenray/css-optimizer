@@ -15,7 +15,7 @@
  * This program requires PHP 5.4+
  *
  * @program   CSS prefixer and optimizer.
- * @version   4.0
+ * @version   4.2
  * @package   Template
  * @file      css.class.php
  * @author    Victor Nabatov <greenray.spb@gmail.com>
@@ -33,8 +33,6 @@ class CSS {
 
     /**
      * The browser-specific prefixes.
-     * This is not a complete list but the most used css properties.
-     * So it can easily be extended.
      *
      * @var array
      */
@@ -57,17 +55,17 @@ class CSS {
 
         'backface-visibility' => ['-webkit-', ''],
 
-        'border-end-color'           => ['-webkit-', '-moz-', ''],
-        'border-end-style'           => ['-webkit-', '-moz-', ''],
-        'border-end-width'           => ['-webkit-', '-moz-', ''],
-        'border-start-color'         => ['-webkit-', '-moz-', ''],
-        'border-start-style'         => ['-webkit-', '-moz-', ''],
-        'border-start-width'         => ['-webkit-', '-moz-', ''],
-        'border-image'               => ['-o-', ''],
-        'border-image-outset'        => ['-o-', ''],
-        'border-image-repeat'        => ['-o-', ''],
-        'border-image-source'        => ['-o-', ''],
-        'border-image-width'         => ['-o-', ''],
+        'border-end-color'    => ['-webkit-', '-moz-', ''],
+        'border-end-style'    => ['-webkit-', '-moz-', ''],
+        'border-end-width'    => ['-webkit-', '-moz-', ''],
+        'border-start-color'  => ['-webkit-', '-moz-', ''],
+        'border-start-style'  => ['-webkit-', '-moz-', ''],
+        'border-start-width'  => ['-webkit-', '-moz-', ''],
+        'border-image'        => ['-o-', ''],
+        'border-image-outset' => ['-o-', ''],
+        'border-image-repeat' => ['-o-', ''],
+        'border-image-source' => ['-o-', ''],
+        'border-image-width'  => ['-o-', ''],
 
         'box-align'            => ['-webkit-', '-moz-', '-ms-', ''],
         'box-decoration-break' => ['-webkit-', ''],
@@ -82,16 +80,16 @@ class CSS {
         'box-shadow'           => ['-webkit-', ''],
         'box-sizing'           => ['-webkit-', ''],
 
-        'column-count'        => ['-webkit-', '-moz-', ''],
-        'column-fill'         => ['-moz-', ''],
-        'column-gap'          => ['-webkit-', '-moz-', ''],
-        'column-rule'         => ['-webkit-', '-moz-', ''],
-        'column-rule-color'   => ['-webkit-', '-moz-', ''],
-        'column-rule-style'   => ['-webkit-', '-moz-', ''],
-        'column-rule-width'   => ['-webkit-', '-moz-', ''],
-        'column-span'         => ['-webkit-', ''],
-        'column-width'        => ['-webkit-', '-moz-', ''],
-        'columns'             => ['-webkit-', '-ms-', ''],
+        'column-count'      => ['-webkit-', '-moz-', ''],
+        'column-fill'       => ['-moz-', ''],
+        'column-gap'        => ['-webkit-', '-moz-', ''],
+        'column-rule'       => ['-webkit-', '-moz-', ''],
+        'column-rule-color' => ['-webkit-', '-moz-', ''],
+        'column-rule-style' => ['-webkit-', '-moz-', ''],
+        'column-rule-width' => ['-webkit-', '-moz-', ''],
+        'column-span'       => ['-webkit-', ''],
+        'column-width'      => ['-webkit-', '-moz-', ''],
+        'columns'           => ['-webkit-', '-ms-', ''],
 
         'filter' => ['-webkit-', ''],
 
@@ -182,16 +180,21 @@ class CSS {
 
         'document'  => ['-moz-', ''],
         'keyframes' => ['-webkit-', '-moz-', '-o-', ''],
-        'viewport' => ['-ms-', '-o-', ''],
+        'viewport'  => ['-ms-', '-o-', ''],
 
         'placeholder' => ['-webkit-input-', '-moz-', '-ms-input-', ''],
         'selection'   => ['-moz-', '']
     ];
 
-	/** Class constructor. */
-	public function __construct() {
+	/**
+     * Class constructor.
+     *
+     * @param array $options Additional options for optimizer
+     */
+	public function __construct($options = []) {
         $this->css    = '';
         $this->config = parse_ini_file(CONFIG);
+        $this->config = array_replace($this->config, $options);
     }
 
     /**
@@ -208,25 +211,25 @@ class CSS {
      * @return string       Prefixed and compressed CSS
      */
     public function compress($file) {
-        $cached = str_replace('/', '.', $file);
-        if (!empty($this->config['cache_css'])) {
-            $this->css = $this->getFromCache($cached);
+        if (is_file($file)) {
+            if (!empty($this->config['cache_css'])) {
+                $cached = str_replace('/', '.', $file);
+                $this->css = $this->getFromCache($cached);
+            }
         }
-        if ($this->css === FALSE) {
+        if (empty($this->css)) {
             $pathinfo  = pathinfo($file);
-            $this->css = file_get_contents($file);
+            $this->css = is_file($file) ? file_get_contents($file) : $file;
             #
             # Processing rule @import
             #
             $this->import($pathinfo['dirname']);
-            if (!empty($this->config['cache_css'])) {
-                if (!empty($this->config['encode_colors'])) {
-                    $this->rgbToHex();
-                    $this->hslToHex();
-                }
-                if (!empty($this->config['encode_images'])) $this->images();
-                if (!empty($this->config['encode_fonts']))  $this->fonts();
+            if (!empty($this->config['encode_colors'])) {
+                $this->rgbToHex();
+                $this->hslToHex();
             }
+            if (!empty($this->config['encode_images'])) $this->images();
+            if (!empty($this->config['encode_fonts']))  $this->fonts();
             #
             # Set the prefixes of browsers
             #
@@ -252,11 +255,6 @@ class CSS {
             # Remove the spaces, if a curly bracket, colon, semicolon or comma is placed before or after them
             #
             $this->css = preg_replace('#\s*([\{:;,]) *#', '$1', $this->css);
-                    #
-                    # Readable result (remove after testing)
-                    #
-                    file_put_contents(CACHE.$cached.'.readable.css', $this->css, LOCK_EX);
-                    #
             #
             # Remove newline characters and tabs
             #
@@ -290,18 +288,12 @@ class CSS {
      * @param string $dir CSS file's directory
      */
     private function import($dir) {
-        preg_match_all('#\@import url\(([\w\'\"\/.]*)\);#', $this->css, $match);
-        if (!empty($match[0])) {
-            #
-            # For correct operation the condition the order of include files is very important.
-            # And it depends on the sequence of @import directives.
-            #
-            $match[0] = array_reverse($match[0]);
-            $match[1] = array_reverse($match[1]);
-            foreach ($match[0] as $key => $import) {
-                $this->css = str_replace($match[0][$key], '', $this->css);
-                $file      = str_replace(['"', '\''], '', $match[1][$key]);
-                $this->css = file_get_contents($dir.DS.$file).PHP_EOL.$this->css;
+        preg_match_all('#\@import url\(([\w\'\"\/.]*)\);#', $this->css, $match, PREG_SET_ORDER);
+        if (!empty($match)) {
+            foreach ($match as $key => $import) {
+                $file = str_replace(['"', '\''], '', $import[1]);
+                $file = file_get_contents($dir.DS.$file).PHP_EOL;
+                $this->css = str_replace($import[0], $file, $this->css);
             }
         }
     }
@@ -312,10 +304,10 @@ class CSS {
         if (!empty($match[1])) {
             foreach ($match[1] as $key => $value) {
                 $rgbcolors = explode(',', $value);
-                $hexcolor = '#';
+                $hexcolor  = '#';
                 for ($i = 0; $i < 3; $i++) {
                     #
-                    # Обработка значений в процентах
+                    # Handling percentage values
                     #
                     if (strpos($rgbcolors[$i], '%') !== FALSE) {
                         $rgbcolors[$i] = substr($rgbcolors[$i], 0, -1);
@@ -380,35 +372,38 @@ class CSS {
 
     /** Replace images references with base64_encoded data. */
     private function images() {
-        preg_match_all('#background[\:|\-image\:]+[\s\w]*url\(([\w\'\"\/\.\-]+)\)#', $this->css, $match);
-        if (!empty($match[1])) {
-            $this->encode($match[1], 'image');
+        preg_match_all('#background[\:|\-image\:]+[\s\w]*url\(([\w\'\"\/\.\-]+)\)#', $this->css, $match, PREG_SET_ORDER);
+        if (!empty($match)) {
+            foreach ($match as $key => $import) {
+                $this->encode($import[1], 'image');
+            }
         }
     }
 
     /** Replace fonts .woff and .woff2 references with base64_encoded data. */
     private function fonts() {
-        preg_match_all('#[src:|| |\t]*url\(([\w\/\.\-\']+(woff|woff2)+\')\)#', $this->css, $match);
-        if (!empty($match[1])) {
-            $this->encode($match[1], 'font');
+        preg_match_all('#[src:|| |\t]*url\(([\w\/\.\-\']+)([\#\w\?]*)\'\)#', $this->css, $match, PREG_SET_ORDER);
+        if (!empty($match)) {
+            foreach ($match as $key => $import) {
+                $this->encode($import[1], 'font');
+            }
         }
     }
 
     /**
      * Encodes image or font.
-     * 
-     * @param array  $data Reference to image or font
+     *
+     * @param array  $file Name of image or font file
      * @param string $mode What to encode: image or font
      */
-    private function encode($data, $mode) {
-        foreach ($data as $key => $value) {
-            $file = str_replace(['../', '\'', '"'], '', $value);
-            $type = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-            $file = file_get_contents($file);
+    private function encode($file, $mode) {
+        $file  = str_replace(['../', '\'', '"'], '', $file);
+        $type  = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        if (file_exists($file)) {
+            $$mode = file_get_contents($file);
             if ($mode === 'image')
-                 $encoded = str_replace($value, 'data:image/'.$type.';base64,'.base64_encode($file), $value);
-            else $encoded = str_replace($value, 'data:application/font-'.$type.';charset=utf-8;base64,'.base64_encode($file), $value);
-            $this->css = str_replace($value, $encoded, $this->css);
+                 $this->css = str_replace($file, 'data:image/'.$type.';base64,'.base64_encode($$mode), $this->css);
+            else $this->css = str_replace($file, 'data:application/font-'.$type.';charset=utf-8;base64,'.base64_encode($$mode), $this->css);
         }
     }
 
@@ -536,6 +531,6 @@ class CSS {
      * @return mixed        Data from cache or FALSE
 	 */
 	private function getFromCache($file) {
-        return (file_exists(CACHE.$file)) ? file_get_contents(CACHE.$file) : FALSE;
+        return (file_exists(CACHE.$file)) ? file_get_contents(CACHE.$file) : '';
 	}
 }

@@ -4,9 +4,9 @@ CSS prefixer and optimizer.
 Reads css code, automatically inserts browser-specific prefixes and compresses the code.
 There is a possibility of caching the result.
 
-It is important to follow the correct installation of access rights to the data directory (the cache).
-
 ----- FEACHURES -----
+
+      Handles both external and embedded styles.
 
     - Handles css @import directive thus multiple files can be combined into one.
     - Handles rules (ex.@keyframes), pseudoelevents (ex. ::placeholder).
@@ -113,7 +113,7 @@ transition:height .25s ease .1s;
 }
 }
 
-After finishing (removing newlines) the data file will be prepared, placed in one line.
+After finishing (removing newlines) the data file will be placed in one line.
 
 The original code: https://github.com/Greenray/css-optimizer.
 Copyright (C) 2016 Victor Nabatov greenray.spb@gmail.com
