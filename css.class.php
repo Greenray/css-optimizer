@@ -15,7 +15,7 @@
  * This program requires PHP 5.4+
  *
  * @program   CSS prefixer and optimizer.
- * @version   4.2
+ * @version   4.3
  * @package   Template
  * @file      css.class.php
  * @author    Victor Nabatov <greenray.spb@gmail.com>
@@ -212,7 +212,7 @@ class CSS {
      */
     public function compress($file) {
         if (is_file($file)) {
-            if (!empty($this->config['cache_css'])) {
+            if ($this->config['cache_css'] === TRUE) {
                 $cached = str_replace('/', '.', $file);
                 $this->css = $this->getFromCache($cached);
             }
@@ -271,7 +271,7 @@ class CSS {
             # Place the compiled data into cache
             # For clarity, a simple file name is used, but can be applied encoding
             #
-            if (!empty($this->config['cache_css'])) {
+            if ($this->config['cache_css'] === TRUE) {
                 file_put_contents(CACHE.$cached, $this->css, LOCK_EX);
             }
         }
@@ -296,6 +296,10 @@ class CSS {
                 $this->css = str_replace($import[0], $file, $this->css);
             }
         }
+        #
+        # Remove comments
+        #
+        $this->css = preg_replace('#(\/\*).*?(\*\/)#s', '', $this->css);
     }
 
     /** Converts rgb(43, 92, 160) or rgb(16.9%, 36.1%, 62.7%) to hex value (#2b5ca0). */
@@ -409,10 +413,6 @@ class CSS {
 
     /** Generates browser-specific prefixes. */
     private function setPrefixes() {
-        #
-        # Remove comments
-        #
-        $this->css = preg_replace('#(\/\*).*?(\*\/)#s', '', $this->css);
         $values    = [];
         foreach ($this->styles as $property => $styles) {
             preg_match('/[^-\{]'.$property.'/s', $this->css, $result);

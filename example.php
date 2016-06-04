@@ -13,7 +13,7 @@ $html = file_get_contents('example.html');
 preg_match_all("#\<link rel=\"stylesheet\" type=\"text\/css\" href=\"(.*?)\" media=\"(.*?)\" \/\>#is", $html, $match, PREG_SET_ORDER);
 
 foreach($match as $key => $css) {
-    $CSS  = new CSS();
+    $CSS  = new CSS(['cache_css' => TRUE]);
     $html = str_replace($css[0], '<style type="text/css">'.$CSS->compress($css[1]).'</style>', $html);
 }
 

@@ -1,8 +1,8 @@
 /* styles.css */
 body {
-	background: #fff;
+    background: #fff;
     margin: 0px; /* This will be replaced with 0 ( 0px; )*/
-	padding: 0;
+    padding: 0;
 }
 
 .center { text-align: center; }
@@ -32,15 +32,15 @@ body {
 .codetext {
     background: #1e5799;
     background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
-	font: normal 8pt mono, "Courier New", Courier;
-	margin: 0em 5px; /* This will be replaced with 0 ( 0px; )*/
-	padding: 5px;
+    font: normal 8pt mono, "Courier New", Courier;
+    margin: 0em 5px; /* This will be replaced with 0 ( 0px; )*/
+    padding: 5px;
 }
 
 .someclass {
     background: #4C5A64;
     background: linear-gradient(180deg, #6D818F 1%, #404F5A 60%, #2E3940 99%);
-	border: #000 solid 1px;
+    border: #000 solid 1px;
     border-radius: 5px;
     box-sizing: content-box;
 }
