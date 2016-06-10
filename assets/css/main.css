@@ -13,9 +13,7 @@
     font-style: normal;
 }
 
-input[type="search"]::placeholder {
-    color: #ffdd55;
-}
+input[type="search"]::placeholder { color: #ffdd55; }
 
 .included_font {
     font-family: scriptinaregular;

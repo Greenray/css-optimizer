@@ -10,7 +10,7 @@ There is a possibility of caching the result.
 
 * Handles css __@import__ directive thus multiple files can be combined into one.
 * Handles rules (ex. __@keyframes__), pseudoelevents (ex. __::placeholder__).
-* Automatically inserts browser-specific prefixes for defined css properties.
+* Automatically inserts browser-specific prefixes for css properties.
 * Replaces image references within CSS with base64_encoded data.
 * Replaces fonts (.woff, .woff2, .eot, .ttf, .svg) references within CSS rule __@font-face__ with base64_encoded data.
 * Optimizes the color settings (#00ff77 => #0f7) and property values (0px => 0, -0.5 => -.5).
@@ -27,7 +27,7 @@ This program requires PHP 5.4+
 
 ## Example
 
-    /* File styles.css */
+    /* styles.css */
 
     /* This will be prefixed */
     input[type="search"]::placeholder {
@@ -58,7 +58,6 @@ This program requires PHP 5.4+
             90% { transform: none; }
             95% { transform: scaleY(0.1); }
         }
-
     }
 
 ## Result

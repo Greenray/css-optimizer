@@ -12,6 +12,7 @@
  * Converts rgb(43, 92, 160), rgb(16.9%, 36.1%, 62.7%), hsl(214.9,57.6%,39.8%) to hex value (#2b5ca0).
  * There is a possibility of caching the result.
  * It is important to set the correct installation of access rights to the cache directory.
+ *
  * This program requires PHP 5.4+
  *
  * @program   CSS prefixer and optimizer.
@@ -280,6 +281,7 @@ class CSS {
 
     /**
      * Handles the rule "@import".
+     * 
      * Recognizes the rules:
      * @import url("dir/style.css");
      * @import url('dir/style.css');
