@@ -2,7 +2,7 @@
 #
 # Remove all files from CACHE directory and put your browser to http://localhost/css-optimizer/example.php
 #
-ini_set('display_errors', 1);
+ini_set('display_errors', 1);    // For testing
 define ('DS', DIRECTORY_SEPARATOR);
 define ('CACHE',  'cache'.DS);
 define ('CONFIG', 'assets'.DS.'config.ini');
@@ -19,7 +19,7 @@ foreach($match as $key => $css) {
 
 preg_match_all("#\s*<style\b[^>]*?>\s*<!--\s*([\s\S]*?)\s*-->\s*<\/style>\s*#i", $html, $match, PREG_SET_ORDER);
 foreach($match as $key => $css) {
-    $CSS  = new CSS(['cache_css' => FALSE]);
+    $CSS  = new CSS(['cache_css' => FALSE]);  // This will be cached with page so FALSE
     $html = str_replace($css[0], '<style type="text/css">'.$CSS->compress($css[1]).'</style>', $html);
 }
 

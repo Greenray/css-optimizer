@@ -1,26 +1,26 @@
 <!doctype html>
 <html>
 <head>
-    <title>API for class CSS (CSS prefixer and optimizer v4.2)</title>
+    <title>API for class CSS (CSS prefixer and optimizer v4.3)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="generator" content="phpAPI 5.0 (https://github.com/Greenray/phpAPI/)">
+    <meta name="generator" content="phpAPI 6.0 (https://github.com/Greenray/phpAPI/)">
     <link href="../style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
     <div class="page">
         <div class="header center">
             <div class="content">
-                CSS prefixer and optimizer v4.2                <div class="logo_desc">Интерфейс прикладного программирования</div>
+                CSS prefixer and optimizer v4.3                <div class="logo_desc">Application Programming Interface</div>
             </div>
         </div>
         <div class="panel">
             <div class="content">
-                <h1>[Namespaces]</h1>
+                <h1>Namespaces</h1>
 <ul>
     <li><a href="../template/package-summary.html">Template</a></li>
 </ul>
-<h1>[Namespace] Template</h1>
-    <h2>[Classes]</h2>
+<h1>Namespace Template</h1>
+    <h2>Classes</h2>
     <ul>
             <li><a href="../template/css.html" title="Template \ CSS">CSS</a></li>
         </ul>
@@ -40,16 +40,15 @@
                 </ul>
     </div>
     <div class="small_links">
-        Общий обзор: <a href="#summary_fields">Поля</a> | <a href="#summary_methods">Методы</a> | <a href="#summary_constructor">Конструктор</a>
-        Детали: <a href="#details_fields">Поля</a> | <a href="#details_methods">Методы</a> | <a href="#details_constructor">Конструктор</a>
+        <a href="#details_fields">Fields</a> | <a href="#details_methods">Methods</a> | <a href="#details_constructor">Constructor</a>
     </div>
 </nav>
                 <hr />
-<div class="package">Пространство имен Template</div>
+<div class="package">Namespace Template</div>
 <h1>Class CSS</h1>
 <div id="list">
     <ul>
-        <li><strong>CSS</strong></li></ul>    </ul>
+        <li><strong>CSS</strong></li></ul></li>    </ul>
 </div>
 <hr />
 <p class="arguments">public  class <strong>CSS</strong></p>
@@ -64,7 +63,7 @@
             <tr>
             <td class="hid left w_100">Version</td>
             <td class="hid right w_100 lilac">&nbsp;</td>
-                            <td class="hid" colspan="2">4.2</td>
+                            <td class="hid" colspan="2">4.3</td>
                     </tr>
             <tr>
             <td class="hid left w_100">File</td>
@@ -88,143 +87,22 @@
                     </tr>
         </table>
 </div>
-    <table id="summary_fields">
-        <tr><th colspan="2">Поля: общий обзор</th></tr>
-                    <tr>
-                <td class="type w_200">private  array</td>
-                <td class="description">
-                    <pre><a href="#$config"><span class="green">$config</span></a> array</pre>
-                    <p class="description">Configuration data</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  string</td>
-                <td class="description">
-                    <pre><a href="#$css"><span class="green">$css</span></a> string</pre>
-                    <p class="description">CSS code that is executing</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  array</td>
-                <td class="description">
-                    <pre><a href="#$styles"><span class="green">$styles</span></a> array</pre>
-                    <p class="description">The browser-specific prefixes.</p>
-                </td>
-            </tr>
-            </table>
-    <table id="summary_constructor">
-        <tr><th colspan="2">Конструктор: общий обзор</th></tr>
-        <tr>
-            <td class="type w_200">public  void</td>
-            <td class="description">
-                <p><a href="#__construct"><strong><span class="black">__construct</span></strong></a>(<span class="lilac">array</span> <span class="blue">$options</span>)</p>
-                <p class="description">Class constructor.</p>
-            </td>
-        </tr>
-    </table>
-    <table id="summary_methods">
-        <tr><th colspan="2">Методы: общий обзор</th></tr>
-                    <tr>
-                <td class="type w_200">public  string</td>
-                <td class="description">
-                    <p><a href="#compress"><strong><span class="black">compress</span></strong></a> (<span class="lilac">string</span> <span class="blue">$file</span>)</p>
-                    <p class="description">Class main method.</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  void</td>
-                <td class="description">
-                    <p><a href="#import"><strong><span class="black">import</span></strong></a> (<span class="lilac">string</span> <span class="blue">$dir</span>)</p>
-                    <p class="description">Handles the rule "@import".</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">protected  void</td>
-                <td class="description">
-                    <p><a href="#rgbToHex"><strong><span class="black">rgbToHex</span></strong></a> ()</p>
-                    <p class="description">Converts rgb(43, 92, 160) or rgb(16.9%, 36.1%, 62.7%) to hex value (#2b5ca0).</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  void</td>
-                <td class="description">
-                    <p><a href="#hslToHex"><strong><span class="black">hslToHex</span></strong></a> ()</p>
-                    <p class="description">Converts hsl(214.9,57.6%,39.8%) to hex value (#2b5ca0).</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  integer</td>
-                <td class="description">
-                    <p><a href="#toRgb"><strong><span class="black">toRgb</span></strong></a> (<span class="lilac">integer</span> <span class="blue">$v1</span>, <span class="lilac">integer</span> <span class="blue">$v2</span>, <span class="lilac">integer</span> <span class="blue">$hue</span>)</p>
-                    <p class="description">Helper function to convert hsl to rgb.</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  void</td>
-                <td class="description">
-                    <p><a href="#images"><strong><span class="black">images</span></strong></a> ()</p>
-                    <p class="description">Replace images references with base64_encoded data.</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  void</td>
-                <td class="description">
-                    <p><a href="#fonts"><strong><span class="black">fonts</span></strong></a> ()</p>
-                    <p class="description">Replace fonts .woff and .woff2 references with base64_encoded data.</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  void</td>
-                <td class="description">
-                    <p><a href="#encode"><strong><span class="black">encode</span></strong></a> (<span class="lilac">array</span> <span class="blue">$file</span>, <span class="lilac">string</span> <span class="blue">$mode</span>)</p>
-                    <p class="description">Encodes image or font.</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  void</td>
-                <td class="description">
-                    <p><a href="#setPrefixes"><strong><span class="black">setPrefixes</span></strong></a> ()</p>
-                    <p class="description">Generates browser-specific prefixes.</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  void</td>
-                <td class="description">
-                    <p><a href="#setPrefixesForRules"><strong><span class="black">setPrefixesForRules</span></strong></a> (<span class="lilac">array</span> <span class="blue">$rules</span>)</p>
-                    <p class="description">Generates browser-specific prefixes for rules.</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  void</td>
-                <td class="description">
-                    <p><a href="#setPrefixesForPseudo"><strong><span class="black">setPrefixesForPseudo</span></strong></a> (<span class="lilac">array</span> <span class="blue">$pseudo</span>)</p>
-                    <p class="description">Generates browser-specific prefixes for pseudoelements.</p>
-                </td>
-            </tr>
-                    <tr>
-                <td class="type w_200">private  mixed</td>
-                <td class="description">
-                    <p><a href="#getFromCache"><strong><span class="black">getFromCache</span></strong></a> (<span class="lilac">string</span> <span class="blue">$file</span>)</p>
-                    <p class="description">Gets a compiled file from the cache.</p>
-                </td>
-            </tr>
-            </table>
-    <h2 id="details_fields">Поля: детали</h2>
+    <h2 id="details_fields">Fields</h2>
             <div class="location">css.class.php at line 29</div>
         <pre class="arguments" id="config">private  array <strong><span class="green">$config</span></strong> = []</pre>
         <div class="details">Configuration data</div>
         <hr />
             <div class="location">css.class.php at line 32</div>
-        <pre class="arguments" id="css">private  string <strong><span class="green">$css</span></strong> = <span class="red">''</span></pre>
+        <pre class="arguments" id="css">private  string <strong><span class="green">$css</span></strong> = <span class="red">""</span></pre>
         <div class="details">CSS code that is executing</div>
         <hr />
             <div class="location">css.class.php at line 39</div>
-        <pre class="arguments" id="styles">private  array <strong><span class="green">$styles</span></strong> = [<br />        <span class="red">'align-content'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'align-items'</span>   => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'align-self'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'animation'</span>                 => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-delay'</span>           => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-direction'</span>       => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-duration'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-fill-mode'</span>       => [<span class="red">'-webkit-'</span>,<span class="red">''</span>],<br />        <span class="red">'animation-iteration-count'</span> => [<span class="red">'-webkit-'</span>,<span class="red">''</span>],<br />        <span class="red">'animation-name'</span>            => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-play-state'</span>      => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'animation-timing-function'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'appearance'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'backface-visibility'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'border-end-color'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-end-style'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-end-width'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-start-color'</span>  => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-start-style'</span>  => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-start-width'</span>  => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-image'</span>        => [<span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-image-outset'</span> => [<span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-image-repeat'</span> => [<span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-image-source'</span> => [<span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'border-image-width'</span>  => [<span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'box-align'</span>            => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-decoration-break'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-direction'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-flex'</span>             => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-flex-group'</span>       => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-lines'</span>            => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-ordinal-group'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-orient'</span>           => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-pack'</span>             => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-reflect'</span>          => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-shadow'</span>           => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'box-sizing'</span>           => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'column-count'</span>      => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-fill'</span>       => [<span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-gap'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-rule'</span>       => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-rule-color'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-rule-style'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-rule-width'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-span'</span>       => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'column-width'</span>      => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'columns'</span>           => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'filter'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'flex-basis'</span>     => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'flex-direction'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'flex-flow'</span>      => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'flex-grow'</span>      => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'flex-shrink'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'flex-wrap'</span>      => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'font-kerning'</span>           => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'font-variant-ligatures'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'fullscreen'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'grid'</span>                  => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-area'</span>             => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-column'</span>           => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-auto-columns'</span>     => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-auto-flow'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-auto-rows'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-column-end'</span>       => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-column-start'</span>     => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-row'</span>              => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-row-end'</span>          => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-row-start'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-template-areas'</span>   => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-template-columns'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'grid-template-rows'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'hyphens'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'image-rendering'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'mask-clip'</span>      => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'mask-composite'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'mask-image'</span>     => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'mask-origin'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'mask-size'</span>      => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'object-fit'</span> => [<span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'opacity'</span> => [<span class="red">'-khtml-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'orient'</span> => [<span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'perspective'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'perspective-origin'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'ruby-position'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'scroll-snap-coordinate'</span>  => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'scroll-snap-destination'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'scroll-snap-points-x'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'scroll-snap-points-y'</span>    => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'shape-image-threshold'</span>   => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'scroll-snap-type'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'tab-size'</span>  => [<span class="red">'-moz-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'text-align-last'</span>       => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'text-decoration-color'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'text-decoration-line'</span>  => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'text-decoration-style'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'text-justify'</span>          => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'text-orientation'</span>      => [<span class="red">'-epub-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'transform'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'transform-origin'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br />        <span class="red">'transform-style'</span>  => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'transition'</span>                 => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'transition-delay'</span>           => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'transition-duration'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'transition-property'</span>        => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'transition-timing-function'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'linear-gradient'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br />        <span class="red">'radial-gradient'</span> => [<span class="red">'-webkit-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'repeating-linear-gradient'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'repeating-radial-gradient'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'user-modify'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'user-select'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'writing-mode'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-ms-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'document'</span>  => [<span class="red">'-moz-'</span>, <span class="red">''</span>],<br />        <span class="red">'keyframes'</span> => [<span class="red">'-webkit-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br />        <span class="red">'viewport'</span>  => [<span class="red">'-ms-'</span>, <span class="red">'-o-'</span>, <span class="red">''</span>],<br /><br />        <span class="red">'placeholder'</span> => [<span class="red">'-webkit-input-'</span>, <span class="red">'-moz-'</span>, <span class="red">'-ms-input-'</span>, <span class="red">''</span>],<br />        <span class="red">'selection'</span>   => [<span class="red">'-moz-'</span>, <span class="red">''</span>]<br />    ]</pre>
+        <pre class="arguments" id="styles">private  array <strong><span class="green">$styles</span></strong> = [<br />        <span class="red">"align-content"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"align-items"</span>   => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"align-self"</span>    => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"animation"</span>                 => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"animation-delay"</span>           => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"animation-direction"</span>       => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"animation-duration"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"animation-fill-mode"</span>       => [<span class="red">"-webkit-"</span>,<span class="red">""</span>],<br />        <span class="red">"animation-iteration-count"</span> => [<span class="red">"-webkit-"</span>,<span class="red">""</span>],<br />        <span class="red">"animation-name"</span>            => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"animation-play-state"</span>      => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"animation-timing-function"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"appearance"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"backface-visibility"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"border-end-color"</span>    => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"border-end-style"</span>    => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"border-end-width"</span>    => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"border-start-color"</span>  => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"border-start-style"</span>  => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"border-start-width"</span>  => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"border-image"</span>        => [<span class="red">"-o-"</span>, <span class="red">""</span>],<br />        <span class="red">"border-image-outset"</span> => [<span class="red">"-o-"</span>, <span class="red">""</span>],<br />        <span class="red">"border-image-repeat"</span> => [<span class="red">"-o-"</span>, <span class="red">""</span>],<br />        <span class="red">"border-image-source"</span> => [<span class="red">"-o-"</span>, <span class="red">""</span>],<br />        <span class="red">"border-image-width"</span>  => [<span class="red">"-o-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"box-align"</span>            => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-decoration-break"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-direction"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-flex"</span>             => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-flex-group"</span>       => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-lines"</span>            => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-ordinal-group"</span>    => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-orient"</span>           => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-pack"</span>             => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-reflect"</span>          => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-shadow"</span>           => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"box-sizing"</span>           => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"column-count"</span>      => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"column-fill"</span>       => [<span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"column-gap"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"column-rule"</span>       => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"column-rule-color"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"column-rule-style"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"column-rule-width"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"column-span"</span>       => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"column-width"</span>      => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"columns"</span>           => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"filter"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"flex-basis"</span>     => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"flex-direction"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"flex-flow"</span>      => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"flex-grow"</span>      => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"flex-shrink"</span>    => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"flex-wrap"</span>      => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"font-kerning"</span>           => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"font-variant-ligatures"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"fullscreen"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"grid"</span>                  => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-area"</span>             => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-column"</span>           => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-auto-columns"</span>     => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-auto-flow"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-auto-rows"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-column-end"</span>       => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-column-start"</span>     => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-row"</span>              => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-row-end"</span>          => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-row-start"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-template-areas"</span>   => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-template-columns"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"grid-template-rows"</span>    => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"hyphens"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"image-rendering"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-ms-"</span>, <span class="red">"-o-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"mask-clip"</span>      => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"mask-composite"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"mask-image"</span>     => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"mask-origin"</span>    => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"mask-size"</span>      => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"object-fit"</span> => [<span class="red">"-o-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"opacity"</span> => [<span class="red">"-khtml-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"orient"</span> => [<span class="red">"-moz-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"perspective"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"perspective-origin"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"ruby-position"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"scroll-snap-coordinate"</span>  => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"scroll-snap-destination"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"scroll-snap-points-x"</span>    => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"scroll-snap-points-y"</span>    => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"shape-image-threshold"</span>   => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"scroll-snap-type"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"tab-size"</span>  => [<span class="red">"-moz-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"text-align-last"</span>       => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"text-decoration-color"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"text-decoration-line"</span>  => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"text-decoration-style"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"text-justify"</span>          => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"text-orientation"</span>      => [<span class="red">"-epub-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"transform"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"transform-origin"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br />        <span class="red">"transform-style"</span>  => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"transition"</span>                 => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"transition-delay"</span>           => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"transition-duration"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"transition-property"</span>        => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"transition-timing-function"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"linear-gradient"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br />        <span class="red">"radial-gradient"</span> => [<span class="red">"-webkit-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"repeating-linear-gradient"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-o-"</span>, <span class="red">""</span>],<br />        <span class="red">"repeating-radial-gradient"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-o-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"user-modify"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"user-select"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"writing-mode"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-ms-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"document"</span>  => [<span class="red">"-moz-"</span>, <span class="red">""</span>],<br />        <span class="red">"keyframes"</span> => [<span class="red">"-webkit-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-o-"</span>, <span class="red">""</span>],<br />        <span class="red">"viewport"</span>  => [<span class="red">"-ms-"</span>, <span class="red">"-o-"</span>, <span class="red">""</span>],<br /><br />        <span class="red">"placeholder"</span> => [<span class="red">"-webkit-input-"</span>, <span class="red">"-moz-"</span>, <span class="red">"-ms-input-"</span>, <span class="red">""</span>],<br />        <span class="red">"selection"</span>   => [<span class="red">"-moz-"</span>, <span class="red">""</span>]<br />    ]</pre>
         <div class="details">The browser-specific prefixes.</div>
         <hr />
-        <h2 id="details_constructor">Конструктор: детали</h2>
+        <h2 id="details_constructor">Constructor</h2>
     <div class="location">css.class.php at line 46</div>
-    <code class="arguments" id="__construct">public  void <strong>__construct</strong>(<span class="lilac">array</span> <span class="blue">$options</span>)</code>
+    <code class="arguments" id="construct">public  void <strong>construct</strong>(<span class="lilac">array</span> <span class="blue">$options</span>)</code>
     <div class="details">
             <p class="description">Class constructor.</p>
         <div class="finfo">
@@ -238,7 +116,7 @@
         </table>
 </div>
     </div>
-    <h2 id="details_methods">Методы: детали</h2>
+    <h2 id="details_methods">Methods</h2>
             <div class="location">css.class.php at line 65</div>
         <code class="arguments" id="compress">public  string <strong>compress</strong> (<span class="lilac">string</span> <span class="blue">$file</span>)</code>
         <div class="details">
@@ -274,7 +152,7 @@
             <tr>
             <td class="hid left w_100">&nbsp</td>
             <td class="hid right w_100 lilac"></td>
-                            <td class="hid" colspan="2">url(<span class="red">'dir/style.css'</span>);</td>
+                            <td class="hid" colspan="2">url(<span class="red">"dir/style.css"</span>);</td>
                     </tr>
             <tr>
             <td class="hid left w_100">&nbsp</td>
@@ -291,19 +169,19 @@
 </div>
         </div>
         <hr />
-            <div class="location">css.class.php at line 154</div>
+            <div class="location">css.class.php at line 158</div>
         <code class="arguments" id="rgbToHex">protected  void <strong>rgbToHex</strong> ()</code>
         <div class="details">
                     <p class="description">Converts rgb(43, 92, 160) or rgb(16.9%, 36.1%, 62.7%) to hex value (#2b5ca0).</p>
                     </div>
         <hr />
-            <div class="location">css.class.php at line 185</div>
+            <div class="location">css.class.php at line 189</div>
         <code class="arguments" id="hslToHex">private  void <strong>hslToHex</strong> ()</code>
         <div class="details">
                     <p class="description">Converts hsl(214.9,57.6%,39.8%) to hex value (#2b5ca0).</p>
                     </div>
         <hr />
-            <div class="location">css.class.php at line 217</div>
+            <div class="location">css.class.php at line 221</div>
         <code class="arguments" id="toRgb">private  integer <strong>toRgb</strong> (<span class="lilac">integer</span> <span class="blue">$v1</span>, <span class="lilac">integer</span> <span class="blue">$v2</span>, <span class="lilac">integer</span> <span class="blue">$hue</span>)</code>
         <div class="details">
                     <p class="description">Helper function to convert hsl to rgb.</p>
@@ -336,19 +214,19 @@
 </div>
         </div>
         <hr />
-            <div class="location">css.class.php at line 226</div>
+            <div class="location">css.class.php at line 230</div>
         <code class="arguments" id="images">private  void <strong>images</strong> ()</code>
         <div class="details">
-                    <p class="description">Replace images references with base64_encoded data.</p>
+                    <p class="description">Replaces images references with base64_encoded data.</p>
                     </div>
         <hr />
-            <div class="location">css.class.php at line 236</div>
+            <div class="location">css.class.php at line 240</div>
         <code class="arguments" id="fonts">private  void <strong>fonts</strong> ()</code>
         <div class="details">
-                    <p class="description">Replace fonts .woff and .woff2 references with base64_encoded data.</p>
+                    <p class="description">Replaces fonts .woff and .woff2 references with base64_encoded data.</p>
                     </div>
         <hr />
-            <div class="location">css.class.php at line 251</div>
+            <div class="location">css.class.php at line 255</div>
         <code class="arguments" id="encode">private  void <strong>encode</strong> (<span class="lilac">array</span> <span class="blue">$file</span>, <span class="lilac">string</span> <span class="blue">$mode</span>)</code>
         <div class="details">
                     <p class="description">Encodes image or font.</p>
@@ -370,7 +248,7 @@
 </div>
         </div>
         <hr />
-            <div class="location">css.class.php at line 263</div>
+            <div class="location">css.class.php at line 267</div>
         <code class="arguments" id="setPrefixes">private  void <strong>setPrefixes</strong> ()</code>
         <div class="details">
                     <p class="description">Generates browser-specific prefixes.</p>
@@ -441,8 +319,7 @@
                 </ul>
     </div>
     <div class="small_links">
-        Общий обзор: <a href="#summary_fields">Поля</a> | <a href="#summary_methods">Методы</a> | <a href="#summary_constructor">Конструктор</a>
-        Детали: <a href="#details_fields">Поля</a> | <a href="#details_methods">Методы</a> | <a href="#details_constructor">Конструктор</a>
+        <a href="#details_fields">Fields</a> | <a href="#details_methods">Methods</a> | <a href="#details_constructor">Constructor</a>
     </div>
 </nav>
             </div>
@@ -450,7 +327,7 @@
     </div>
     <div class="footer">
         <div class="content">
-            <div class="copyright center">Generated by <a href="https://github.com/Greenray/phpAPI" target="_blank">phpAPI</a>: PHP Documentation Creator ver. 5.0 &copy; 2015 - 2016 Greenray</div>
+            <div class="copyright center">Generated by <a href="https://github.com/Greenray/phpAPI" target="_blank">phpAPI</a>: PHP Documentation Creator ver. 6.0 &copy; 2015 - 2016 Greenray</div>
         </div>
     </div>
 </body>

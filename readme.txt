@@ -63,18 +63,10 @@ This program requires PHP 5.4+
 
 ----- RESULT -----
 
-input[type="search"]::-webkit-input-placeholder{
-color:#fd5;
-}
-input[type="search"]::-moz-placeholder{
-color:#fd5;
-}
-input[type="search"]::-ms-input-placeholder{
-color:#fd5;
-}
-input[type="search"]::placeholder{
-color:#fd5;
-}
+input[type="search"]::-webkit-input-placeholder{color:#fd5}
+input[type="search"]::-moz-placeholder{color:#fd5}
+input[type="search"]::-ms-input-placeholder{color:#fd5}
+input[type="search"]::placeholder{color:#fd5}
 
 .some_class{
 background:#1e5799;
@@ -96,22 +88,17 @@ padding:5px 0;
 -o-transition:height .25s ease .1s;
 transition:height .25s ease .1s;
 @-webkit-keyframes eye{
-90%{-webkit-transform:none;-moz-transform:none;-ms-transform:none;-o-transform:none;transform:none;}
-95%{-webkit-transform:scaleY(0.1);-moz-transform:scaleY(0.1);-ms-transform:scaleY(0.1);-o-transform:scaleY(0.1);transform:scaleY(0.1);}
-}
+90%{-webkit-transform:none;-moz-transform:none;-ms-transform:none;-o-transform:none;transform:none}
+95%{-webkit-transform:scaleY(0.1);-moz-transform:scaleY(0.1);-ms-transform:scaleY(0.1);-o-transform:scaleY(0.1);transform:scaleY(0.1)}}
 @-moz-keyframes eye{
-90%{-webkit-transform:none;-moz-transform:none;-ms-transform:none;-o-transform:none;transform:none;}
-95%{-webkit-transform:scaleY(0.1);-moz-transform:scaleY(0.1);-ms-transform:scaleY(0.1);-o-transform:scaleY(0.1);transform:scaleY(0.1);}
-}
+90%{-webkit-transform:none;-moz-transform:none;-ms-transform:none;-o-transform:none;transform:none}
+95%{-webkit-transform:scaleY(0.1);-moz-transform:scaleY(0.1);-ms-transform:scaleY(0.1);-o-transform:scaleY(0.1);transform:scaleY(0.1)}}
 @-o-keyframes eye{
-90%{-webkit-transform:none;-moz-transform:none;-ms-transform:none;-o-transform:none;transform:none;}
-95%{-webkit-transform:scaleY(0.1);-moz-transform:scaleY(0.1);-ms-transform:scaleY(0.1);-o-transform:scaleY(0.1);transform:scaleY(0.1);}
-}
+90%{-webkit-transform:none;-moz-transform:none;-ms-transform:none;-o-transform:none;transform:none}
+95%{-webkit-transform:scaleY(0.1);-moz-transform:scaleY(0.1);-ms-transform:scaleY(0.1);-o-transform:scaleY(0.1);transform:scaleY(0.1)}}
 @keyframes eye{
-90%{-webkit-transform:none;-moz-transform:none;-ms-transform:none;-o-transform:none;transform:none;}
-95%{-webkit-transform:scaleY(0.1);-moz-transform:scaleY(0.1);-ms-transform:scaleY(0.1);-o-transform:scaleY(0.1);transform:scaleY(0.1);}
-}
-}
+90%{-webkit-transform:none;-moz-transform:none;-ms-transform:none;-o-transform:none;transform:none}
+95%{-webkit-transform:scaleY(0.1);-moz-transform:scaleY(0.1);-ms-transform:scaleY(0.1);-o-transform:scaleY(0.1);transform:scaleY(0.1)}}}
 
 After finishing (removing newlines) the data file will be placed in one line.
 

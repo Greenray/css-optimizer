@@ -374,7 +374,7 @@ class CSS {
         return $v1;
     }
 
-    /** Replace images references with base64_encoded data. */
+    /** Replaces images references with base64_encoded data. */
     private function images() {
         preg_match_all('#background[\:|\-image\:]+[\s\w]*url\(([\w\'\"\/\.\-]+)\)#', $this->css, $match, PREG_SET_ORDER);
         if (!empty($match)) {
@@ -384,7 +384,7 @@ class CSS {
         }
     }
 
-    /** Replace fonts .woff and .woff2 references with base64_encoded data. */
+    /** Replaces fonts .woff and .woff2 references with base64_encoded data. */
     private function fonts() {
         preg_match_all('#[src:|| |\t]*url\(([\w\/\.\-\']+)([\#\w\?]*)\'\)#', $this->css, $match, PREG_SET_ORDER);
         if (!empty($match)) {

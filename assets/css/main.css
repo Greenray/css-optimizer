@@ -37,8 +37,8 @@ p::selection {
     color: #fff;
     font: normal 10px/12px Verdana, Arial, Helvetica, sans-serif;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
-    left: 0px;              /* 0px will be replaced with 0 */
-    top:0050px;             /* 0050px will be replaced with 50px */
+    left: 0px;   /* 0px will be replaced with 0 */
+    top:0050px;  /* 0050px will be replaced with 50px */
 }
 
 #point,
